@@ -1,0 +1,14 @@
+@import url("http://fonts.cdnfonts.com/css/aldora");
+@import url("http://fonts.cdnfonts.com/css/poppins");
+@import url("http://fonts.cdnfonts.com/css/gelion");
+
+* {
+  -webkit-font-smoothing: antialiased;
+  font-family: "Gelion", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
