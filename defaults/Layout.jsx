@@ -127,7 +127,7 @@ const Layout = ({ children, title, desc, keywords, page }) => {
         </div>
       </nav>
 
-      <main className="w-[90%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[15vh] lg:mt-[17vh]">
+      <main className="w-[90%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[16vh] lg:mt-[18vh]">
         {children}
       </main>
 
