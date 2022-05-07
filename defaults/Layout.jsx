@@ -152,41 +152,41 @@ const Layout = ({ children, title, desc, keywords, page }) => {
               </button>
             </div>
           </DrawerHeader>
-          <DrawerBody fontSize={20}>
+          <DrawerBody fontSize={18}>
             <div className="flex flex-col space-y-5 px-2">
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-medium py-1">
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/">Home</Link>
               </div>
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-medium py-1">
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/about">About</Link>
               </div>
 
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-medium py-1">
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/team">Team</Link>
               </div>
 
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-medium py-1">
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/contact">Contact</Link>
               </div>
-              <div className="flex space-x-3">
+              <div className="flex py-3 space-x-4">
                 <div className="p-2 text-white bg-primary">
                   <a href="http://instagramm.com/vlanduk">
-                    <FaInstagram size={19} />
+                    <FaInstagram size={18} />
                   </a>
                 </div>
                 <div className="p-2 text-white bg-primary">
                   <a href="https://www.facebook.com/V-Land-UK-100137252369546">
-                    <FaFacebookF size={19} />
+                    <FaFacebookF size={18} />
                   </a>
                 </div>
                 <div className="p-2 text-white bg-primary">
                   <a href="https://twitter.com/vlandukmag">
-                    <FaTwitter size={19} />
+                    <FaTwitter size={18} />
                   </a>
                 </div>
                 <div className="p-2 text-white bg-primary">
                   <a href="https://www.linkedin.com/company/v-land-uk">
-                    <FaLinkedinIn size={19} />
+                    <FaLinkedinIn size={18} />
                   </a>
                 </div>
               </div>
