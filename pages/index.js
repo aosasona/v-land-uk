@@ -3,5 +3,5 @@ import Image from "next/image";
 import Layout from "../defaults/Layout";
 
 export default function Home() {
-  return <Layout></Layout>;
+  return <Layout>Hello world!</Layout>;
 }

@@ -8,6 +8,23 @@
   font-weight: 500;
   box-sizing: border-box;
 }
+nav ::-webkit-scrollbar {
+  display: none;
+}
+.nav-hide {
+  animation: 600ms FadeOutUp ease-out forwards;
+  display: block;
+}
+
+@keyframes FadeOutUp {
+  0% {
+    display: block;
+  }
+  100% {
+    display: none;
+    transform: scaleY(0);
+  }
+}
 
 @tailwind base;
 @tailwind components;

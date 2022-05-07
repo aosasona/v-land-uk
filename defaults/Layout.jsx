@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import { Fade as Hamburger } from "hamburger-react";
 import {
@@ -9,7 +9,18 @@ import {
   DrawerContent,
   DrawerCloseButton,
   useDisclosure,
+  DrawerHeader,
+  Box,
 } from "@chakra-ui/react";
+import { BiSearch } from "react-icons/bi";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTwitter,
+  FaLinkedinIn,
+} from "react-icons/fa";
+import Link from "next/link";
+import NavLink from "../components/NavLink";
 
 const Layout = ({ children, title, desc, keywords, page }) => {
   const [Open, setOpen] = useState(false);
@@ -20,6 +31,15 @@ const Layout = ({ children, title, desc, keywords, page }) => {
     // setOpen(isOpen ? false : true);
     onOpen();
   };
+
+  //Event listener for the links
+  useEffect(() => {
+    const NavLinks = document.getElementById("nav-links");
+    NavLinks.addEventListener("scrollY", () => {
+      NavLinks.classList.add("nav-hide");
+    });
+  }, []);
+
   return (
     <>
       <Head>
@@ -54,9 +74,13 @@ const Layout = ({ children, title, desc, keywords, page }) => {
           {page} - {title}
         </title>
       </Head>
+
       <nav className="bg-white w-screen h-auto fixed top-0 drop-shadow-md z-[9]">
-        <div className="flex justify-between items-center">
-          <div className="h-[7vh] lg:h-[8vh] py-[1.8vh] px-5 lg:px-8 lg:py-[1.5vh]">
+        <div className="flex justify-between items-center py-1 px-5 lg:px-8">
+          <button className="hidden lg:block bg-primary text-white text-sm py-2 px-6 rounded-3xl hover:bg-transparent hover:border-[1.5px] border-primary hover:text-primary transition-all">
+            Subscribe
+          </button>
+          <div className="h-[7vh] lg:h-[8vh] py-[1.8vh] lg:py-[1.5vh]">
             <img src="/Header.svg" alt="Header" className="h-full" />
             {/* <img src="/Header.svg" /> */}
           </div>
@@ -68,25 +92,106 @@ const Layout = ({ children, title, desc, keywords, page }) => {
               toggle={toggleDrawer}
             />
           </div>
+          <div className="hidden lg:flex w-1/4 border-[1px] border-primary justify-between rounded-3xl overflow-hidden px-1 py-1">
+            <input
+              name="SearchText"
+              type="text"
+              placeholder="Search anything..."
+              className="w-full px-3 py-1 text-[16px] placeholder-neutral-300 text-neutral-800 focus:outline-none"
+            />
+            <button className="bg-primary text-white h-auto aspect-square p-2 rounded-full">
+              <BiSearch size={20} />
+            </button>
+          </div>
         </div>
-        <div className="bg-neutral-100 py-2"></div>
+        <div
+          className="h-auto bg-primary bg-opacity-5 flex space-x-3 flex-nowrap overflow-x-scroll py-[10px] px-4"
+          id="nav-links"
+        >
+          <NavLink link="/home">Home</NavLink>
+          <NavLink link="/category/articles">Articles</NavLink>
+          <NavLink link="/category/interviews">Interviews</NavLink>
+          <NavLink link="/category/food-drink">Food & Drink</NavLink>
+          <NavLink link="/category/lifestyle">Lifestyle</NavLink>
+          <NavLink link="/category/fashion-beauty">Fashion & Beauty</NavLink>
+          <NavLink link="/category/recipes">Recipes</NavLink>
+          <NavLink link="/category/health-wellbeing">
+            Health & Wellbeing
+          </NavLink>
+          <NavLink link="/category/shopping">Shopping</NavLink>
+          <NavLink link="/category/entertainment">Entertainment</NavLink>
+          <NavLink link="/category/environment">Environment</NavLink>
+          <NavLink link="/category/shoutout">Shoutout</NavLink>
+          <NavLink link="/category/europe">Europe</NavLink>
+          <NavLink link="/category/events">Events</NavLink>
+        </div>
       </nav>
 
-      {children}
+      <main className="w-[90%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[15vh] lg:mt-[17vh]">
+        {children}
+      </main>
 
       {/* NAVIGATION DRAWER */}
-      {Open && (
-        <>
-          <div className="h-screen w-[70vw] fixed top-0 left-0 bg-white z-[50] drop-shadow-lg"></div>
-          <div className="h-screen w-screen bg-neutral-700 bg-opacity-40 fixed top-0 left-0 z-[40]"></div>
-        </>
-      )}
-
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerBody>Hello</DrawerBody>
+          {/* <DrawerCloseButton /> */}
+          <DrawerHeader>
+            <Box width="40%" mt={6} mb={8} mx="auto">
+              <img src="/Header.svg" alt="Header" className="w-full" />
+            </Box>
+            <div className="flex border-[1px] border-primary justify-between rounded-3xl overflow-hidden px-1 py-1">
+              <input
+                name="SearchText"
+                type="text"
+                placeholder="Search anything..."
+                className="px-3 py-1 text-[16px] placeholder-neutral-300 text-neutral-800 focus:outline-none"
+              />
+              <button className="bg-primary text-white h-auto aspect-square p-2 rounded-full">
+                <BiSearch size={20} />
+              </button>
+            </div>
+          </DrawerHeader>
+          <DrawerBody fontSize={20}>
+            <div className="flex flex-col space-y-5 px-2">
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-medium py-1">
+                <Link href="/">Home</Link>
+              </div>
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-medium py-1">
+                <Link href="/about">About</Link>
+              </div>
+
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-medium py-1">
+                <Link href="/team">Team</Link>
+              </div>
+
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-medium py-1">
+                <Link href="/contact">Contact</Link>
+              </div>
+              <div className="flex space-x-3">
+                <div className="p-2 text-white bg-primary">
+                  <a href="http://instagramm.com/vlanduk">
+                    <FaInstagram size={19} />
+                  </a>
+                </div>
+                <div className="p-2 text-white bg-primary">
+                  <a href="https://www.facebook.com/V-Land-UK-100137252369546">
+                    <FaFacebookF size={19} />
+                  </a>
+                </div>
+                <div className="p-2 text-white bg-primary">
+                  <a href="https://twitter.com/vlandukmag">
+                    <FaTwitter size={19} />
+                  </a>
+                </div>
+                <div className="p-2 text-white bg-primary">
+                  <a href="https://www.linkedin.com/company/v-land-uk">
+                    <FaLinkedinIn size={19} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </DrawerBody>
         </DrawerContent>
       </Drawer>
     </>
