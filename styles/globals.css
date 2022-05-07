@@ -6,8 +6,8 @@
 
 * {
   -webkit-font-smoothing: antialiased;
-  font-family: "Gelion", "Poppins", Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-family: "Gelion", "Poppins", Arial, Helvetica, sans-serif !important;
+  font-weight: 500 !important;
   box-sizing: border-box;
 }
 
@@ -663,6 +663,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 0.05;
 }
 
+.bg-opacity-10{
+  --tw-bg-opacity: 0.1;
+}
+
 .p-2{
   padding: 0.5rem;
 }
@@ -736,6 +740,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   font-size: 16px;
 }
 
+.text-xs{
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-semibold{
   font-weight: 600;
 }
@@ -748,6 +757,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-neutral-800{
   --tw-text-opacity: 1;
   color: rgb(38 38 38 / var(--tw-text-opacity));
+}
+
+.text-primary{
+  --tw-text-opacity: 1;
+  color: rgb(75 172 72 / var(--tw-text-opacity));
 }
 
 .placeholder-neutral-300::-moz-placeholder{
