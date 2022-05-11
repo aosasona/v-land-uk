@@ -6,6 +6,7 @@
   -webkit-font-smoothing: antialiased;
   font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important;
   box-sizing: border-box;
+  -webkit-appearance: none !important;
 }
 html,
 body {
