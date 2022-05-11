@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from "react";
+import Moment from "react-moment";
 import Head from "next/head";
 import Image from "next/image";
 import Layout from "../defaults/Layout";
@@ -24,7 +25,7 @@ export default function Home({ articles, meta }) {
         {articles.map((article, index) => (
           <div
             key={index}
-            className="w-full bg-white rounded-xl drop-shadow-lg overflow-hidden article-container"
+            className="w-full bg-white rounded-xl drop-shadow-md overflow-hidden article-container"
             data-aos="fade-up"
           >
             <div className="relative">
@@ -53,13 +54,20 @@ export default function Home({ articles, meta }) {
               </div>
             </div>
             {/* POST BODY */}
-            <div className="px-3 py-3">
+            <div className="px-3 pt-2 pb-4">
+              <Moment
+                format="MMM Do YYYY"
+                className="text-[10px] lg:text-xs py-2"
+              >
+                {article.attributes.publishedAt}
+              </Moment>
+
               <p className="text-[1.75rem] lg:text-4xl leading-tight article-title">
                 <Link href={`/${article.attributes.slug}`}>
                   {article.attributes.title}
                 </Link>
               </p>
-              <p className="text-[11px] lg:text-xs mt-3 poppins">
+              <p className="text-[11px] lg:text-xs mt-2 lg:mt-3 poppins">
                 {article.attributes.description}
               </p>
               <p></p>

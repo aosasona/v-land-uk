@@ -172,17 +172,23 @@ const Layout = ({ children, title, desc, keywords, page }) => {
               <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/">Home</Link>
               </div>
+
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+                <Link href="/shop">Shop</Link>
+              </div>
+
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+                <Link href="/join-us">Join Us</Link>
+              </div>
+
               <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/about">About</Link>
               </div>
 
               <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
-                <Link href="/team">Team</Link>
-              </div>
-
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/contact">Contact</Link>
               </div>
+
               <div className="flex py-3 space-x-4">
                 <div className="p-2 text-white bg-primary">
                   <a href="http://instagramm.com/vlanduk">
