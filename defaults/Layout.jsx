@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import { Fade as Hamburger } from "hamburger-react";
 import {
@@ -21,10 +21,12 @@ import {
 } from "react-icons/fa";
 import Link from "next/link";
 import NavLink from "../components/NavLink";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Layout = ({ children, title, desc, keywords, page }) => {
-  const [Open, setOpen] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [Open, setOpen] = useState(false);
+  const [Nav, setNav] = useState(true);
 
   //Function to toggle drawer
   const toggleDrawer = () => {
@@ -34,9 +36,12 @@ const Layout = ({ children, title, desc, keywords, page }) => {
 
   //Event listener for the links
   useEffect(() => {
-    const NavLinks = document.getElementById("nav-links");
-    NavLinks.addEventListener("scrollY", () => {
-      NavLinks.classList.add("nav-hide");
+    document.addEventListener("scroll", () => {
+      if (scrollY > 200) {
+        setNav(false);
+      } else {
+        setNav(true);
+      }
     });
   }, []);
 
@@ -75,8 +80,8 @@ const Layout = ({ children, title, desc, keywords, page }) => {
         </title>
       </Head>
 
-      <nav className="bg-white w-screen h-auto fixed top-0 drop-shadow-md z-[9]">
-        <div className="flex justify-between items-center py-1 px-5 lg:px-8">
+      <nav className="bg-transparent w-screen h-auto fixed top-0 drop-shadow-md z-[999]">
+        <div className="relative bg-white flex justify-between items-center py-1 px-5 lg:px-8 z-[999]">
           <button className="hidden lg:block bg-primary text-white text-sm py-2 px-6 rounded-3xl hover:bg-transparent hover:border-[1.5px] border-primary hover:text-primary transition-all">
             Subscribe
           </button>
@@ -104,30 +109,40 @@ const Layout = ({ children, title, desc, keywords, page }) => {
             </button>
           </div>
         </div>
-        <div
-          className="h-auto bg-primary bg-opacity-5 flex space-x-3 flex-nowrap overflow-x-scroll py-[10px] px-4"
-          id="nav-links"
-        >
-          <NavLink link="/home">Home</NavLink>
-          <NavLink link="/category/articles">Articles</NavLink>
-          <NavLink link="/category/interviews">Interviews</NavLink>
-          <NavLink link="/category/food-drink">Food & Drink</NavLink>
-          <NavLink link="/category/lifestyle">Lifestyle</NavLink>
-          <NavLink link="/category/fashion-beauty">Fashion & Beauty</NavLink>
-          <NavLink link="/category/recipes">Recipes</NavLink>
-          <NavLink link="/category/health-wellbeing">
-            Health & Wellbeing
-          </NavLink>
-          <NavLink link="/category/shopping">Shopping</NavLink>
-          <NavLink link="/category/entertainment">Entertainment</NavLink>
-          <NavLink link="/category/environment">Environment</NavLink>
-          <NavLink link="/category/shoutout">Shoutout</NavLink>
-          <NavLink link="/category/europe">Europe</NavLink>
-          <NavLink link="/category/events">Events</NavLink>
-        </div>
+        <AnimatePresence>
+          {Nav && (
+            <motion.div
+              initial={{ y: -45, originY: "top", zIndex: 0 }}
+              animate={{ opacity: 1, y: 0, originY: "top", zIndex: 0 }}
+              transition={{ duration: 0.2 }}
+              exit={{ y: -45, originY: "top", zIndex: 0 }}
+            >
+              <div className="h-auto bg-green-50 flex space-x-3 flex-nowrap 2xl:justify-center overflow-x-scroll py-[10px] px-4">
+                <NavLink link="/home">Home</NavLink>
+                <NavLink link="/category/articles">Articles</NavLink>
+                <NavLink link="/category/interviews">Interviews</NavLink>
+                <NavLink link="/category/food-drink">Food & Drink</NavLink>
+                <NavLink link="/category/lifestyle">Lifestyle</NavLink>
+                <NavLink link="/category/fashion-beauty">
+                  Fashion & Beauty
+                </NavLink>
+                <NavLink link="/category/recipes">Recipes</NavLink>
+                <NavLink link="/category/health-wellbeing">
+                  Health & Wellbeing
+                </NavLink>
+                <NavLink link="/category/shopping">Shopping</NavLink>
+                <NavLink link="/category/entertainment">Entertainment</NavLink>
+                <NavLink link="/category/environment">Environment</NavLink>
+                <NavLink link="/category/shoutout">Shoutout</NavLink>
+                <NavLink link="/category/europe">Europe</NavLink>
+                <NavLink link="/category/events">Events</NavLink>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
-      <main className="w-[90%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[16vh] lg:mt-[18vh]">
+      <main className="w-[90%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[16vh] lg:mt-[17vh]">
         {children}
       </main>
 
