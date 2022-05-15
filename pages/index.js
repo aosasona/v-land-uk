@@ -30,7 +30,7 @@ export default function Home({ articles, meta }) {
           >
             <div className="relative">
               <img
-                src={`${BASE_URL}${article.attributes.media.data[0].attributes.url}`}
+                src={`${article.attributes.media.data[0].attributes.url}`}
                 className="w-full aspect-square object-cover"
                 alt={`${article.attributes.media.data[0].attributes.alternativeText}`}
               />
