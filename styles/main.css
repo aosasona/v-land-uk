@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Righteous:100,200,300,400,500,600,700,800,900&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Macondo:100,200,300,400,500,600,700,800,900&display=swap);
+:root {
+  --primary: #4bac48;
+}
 
 * {
   -webkit-font-smoothing: antialiased;
@@ -22,19 +25,17 @@ nav ::-webkit-scrollbar {
 .poppins {
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
-.article-container:nth-child(even) {
-  background: rgba(75, 172, 72);
-  color: white;
+.sponsored {
+  background: rgba(75, 172, 72) !important;
+  color: white !important;
 }
-.article-container:nth-child(5) {
-  grid-column: span 2 / span 2;
-}
-.article-container:nth-child(11) {
-  grid-column: span 2 / span 2;
+.sponsored h1 {
+  color: white !important;
 }
 .article-title {
   font-weight: 600 !important;
   transition: all 0.75s ease-in-out;
+  color: var(--primary);
 }
 .article-title:hover,
 .article-title:focus {
@@ -44,6 +45,13 @@ nav ::-webkit-scrollbar {
 .tag {
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
   font-weight: 700 !important;
+}
+.nav-menu-link {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.nav-menu-link:hover {
+  color: var(--primary);
 }
 @keyframes FadeOutUp {
   0% {

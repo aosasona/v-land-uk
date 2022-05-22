@@ -22,8 +22,11 @@ import {
 import Link from "next/link";
 import NavLink from "../components/NavLink";
 import { AnimatePresence, motion } from "framer-motion";
+import NavMenu from "../components/NavMenu";
+import { useRouter } from "next/router";
 
-const Layout = ({ children, title, desc, keywords, page }) => {
+const Layout = ({ children, title, desc, keywords }) => {
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [Open, setOpen] = useState(false);
   const [Nav, setNav] = useState(true);
@@ -75,17 +78,21 @@ const Layout = ({ children, title, desc, keywords, page }) => {
         <meta property="og:description" content={desc} />
         <meta property="og:image" content="" />
         <meta property="og:url" content="" />
-        <title>
-          {page} - {title}
-        </title>
+        <title>{title}</title>
       </Head>
 
       <nav className="bg-transparent w-screen h-auto fixed top-0 drop-shadow-md z-[999]">
         <div className="relative bg-white flex justify-between items-center py-1 px-5 lg:px-8 z-[999]">
-          <button className="hidden lg:block bg-primary text-white text-sm py-2 px-6 rounded-3xl hover:bg-transparent hover:border-[1.5px] border-primary hover:text-primary transition-all">
-            Subscribe
-          </button>
-          <div className="h-[7vh] lg:h-[8vh] py-[1.8vh] lg:py-[1.5vh]">
+          <div className="items-center space-x-4 hidden lg:flex">
+            <button className="bg-primary text-white text-sm py-2 px-6 rounded-3xl hover:bg-transparent hover:border-[1.5px] border-primary hover:text-primary transition-all">
+              Subscribe
+            </button>
+            <NavMenu />
+          </div>
+          <div
+            className="h-[7vh] lg:h-[8vh] py-[1.8vh] lg:py-[1.5vh] cursor-pointer"
+            onClick={() => router.push("/")}
+          >
             <img src="/Header.svg" alt="Header" className="h-full" />
             {/* <img src="/Header.svg" /> */}
           </div>
@@ -118,7 +125,7 @@ const Layout = ({ children, title, desc, keywords, page }) => {
               exit={{ y: -45, originY: "top", zIndex: 0 }}
             >
               <div className="h-auto bg-green-50 flex space-x-3 flex-nowrap 2xl:justify-center overflow-x-scroll py-[10px] px-4">
-                <NavLink link="/home">Home</NavLink>
+                <NavLink link="/">Home</NavLink>
                 <NavLink link="/category/articles">Articles</NavLink>
                 <NavLink link="/category/interviews">Interviews</NavLink>
                 <NavLink link="/category/food-drink">Food & Drink</NavLink>
