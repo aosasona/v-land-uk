@@ -36,13 +36,13 @@ export default function Home({ articles, meta }) {
   return (
     <Layout>
       <div
-        className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 lg:gap-5
+        className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5
       mb-[5vh]"
       >
         {articles.map((article, index) => (
           <div
             key={index}
-            className={`w-full bg-white rounded-xl drop-shadow-md overflow-hidden article-container ${Sponsored(
+            className={`w-full bg-white rounded-xl drop-shadow-lg overflow-hidden article-container ${Sponsored(
               article.attributes?.categories?.data
             )}`}
             data-aos="fade-up"
