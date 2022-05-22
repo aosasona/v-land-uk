@@ -42,12 +42,12 @@ export default function Home({ articles, meta }) {
         {articles.map((article, index) => (
           <div
             key={index}
-            className={`w-full bg-white rounded-xl drop-shadow-md article-container ${Sponsored(
+            className={`w-full bg-white rounded-xl flex flex-col justify-between gap-2 drop-shadow-md article-container ${Sponsored(
               article.attributes?.categories?.data
             )}`}
             data-aos="fade-up"
           >
-            <div className="relative rounded-t-xl overflow-hidden">
+            <div className="relative block rounded-t-xl overflow-hidden">
               <img
                 src={`${article.attributes?.media?.data[0]?.attributes?.formats?.medium?.url}`}
                 className="w-full aspect-square object-cover"
@@ -76,6 +76,7 @@ export default function Home({ articles, meta }) {
               </div>
             </div>
             {/* POST BODY */}
+            {/* <div className="relative px-3 pt-2 pb-4"> */}
             <div className="relative px-3 pt-2 pb-4">
               <Moment
                 format="MMM Do YYYY"
@@ -92,15 +93,16 @@ export default function Home({ articles, meta }) {
               <p className="text-[11px] lg:text-xs mt-1 lg:mt-2 poppins">
                 {article.attributes.description}
               </p>
-
-              <div className="w-max text-white bg-primary flex items-center space-x-1 mt-3 px-2 py-[5px] rounded-2xl">
-                <FaUserCircle />
-                <p className="text-[9px] lg:text-[10px] text-neutral-100 poppins font-semibold">
-                  {article.attributes.author?.data?.attributes?.name ||
-                    "Will Callaghan"}
-                </p>
-              </div>
             </div>
+
+            <div className="w-max text-white  bg-primary flex items-center gap-1 px-2 py-[5px] rounded-2xl mx-3 my-3">
+              <FaUserCircle />
+              <p className="text-[9px] lg:text-[10px] text-neutral-100 poppins font-semibold">
+                {article.attributes.author?.data?.attributes?.name ||
+                  "Will Callaghan"}
+              </p>
+            </div>
+            {/* </div> */}
           </div>
         ))}
       </div>
