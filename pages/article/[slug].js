@@ -25,7 +25,7 @@ const Article = ({ article }) => {
       <Back />
       <main className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-4">
         <section className="lg:col-span-9">
-          <div className="relative w-full max-w-[100%] aspect-square lg:h-[40vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden">
+          <div className="relative w-full max-w-[100%] aspect-square lg:h-[40vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden object-cover">
             <Image
               src={
                 article.attributes.media.data[0].attributes.formats.large.url
@@ -69,8 +69,10 @@ const Article = ({ article }) => {
                 "Will Callaghan"}
             </h3>
           </div>
-          <div className="text-neutral-600 poppins leading-loose lg:text-lg px-1 mt-4 mb-5">
-            <ReactMarkdown>{parse(article?.attributes?.content)}</ReactMarkdown>
+          <div className="text-neutral-600 poppins leading-loose lg:text-lg px-1 mt-4 mb-5 article-body">
+            {/* <ReactMarkdown className="article-body"> */}
+            {parse(article?.attributes?.content)}
+            {/* </ReactMarkdown> */}
           </div>
         </section>
         <section className="col-span-3">

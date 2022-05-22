@@ -92,6 +92,7 @@ export default function Home({ articles, meta }) {
               <p className="text-[11px] lg:text-xs mt-1 lg:mt-2 poppins">
                 {article.attributes.description}
               </p>
+
               <div className="w-max text-white bg-primary flex items-center space-x-1 mt-3 px-2 py-[5px] rounded-2xl">
                 <FaUserCircle />
                 <p className="text-[9px] lg:text-[10px] text-neutral-100 poppins font-semibold">

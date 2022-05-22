@@ -42,6 +42,9 @@ nav ::-webkit-scrollbar {
   text-decoration: underline;
   text-underline-offset: 0.25rem;
 }
+.article-body {
+  font-family: "Poppins", "Segoe UI", Tahoma !important;
+}
 .tag {
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
   font-weight: 700 !important;
