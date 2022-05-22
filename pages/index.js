@@ -42,7 +42,7 @@ export default function Home({ articles, meta }) {
         {articles.map((article, index) => (
           <div
             key={index}
-            className={`w-full bg-white rounded-xl drop-shadow-lg article-container ${Sponsored(
+            className={`w-full bg-white rounded-xl drop-shadow-md article-container ${Sponsored(
               article.attributes?.categories?.data
             )}`}
             data-aos="fade-up"
@@ -76,7 +76,7 @@ export default function Home({ articles, meta }) {
               </div>
             </div>
             {/* POST BODY */}
-            <div className="px-3 pt-2 pb-4">
+            <div className="relative px-3 pt-2 pb-4">
               <Moment
                 format="MMM Do YYYY"
                 className="text-[10px] lg:text-xs py-2"

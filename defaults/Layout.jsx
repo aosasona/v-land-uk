@@ -28,7 +28,7 @@ import { useRouter } from "next/router";
 
 const Layout = ({ children, title, desc, keywords, image }) => {
   const router = useRouter();
-  const { isScrollingUp, isScrollingDown } = useScrollDirection();
+  const { isScrollingUp, isScrollingDown, isScrolling } = useScrollDirection();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [Open, setOpen] = useState(false);
   const [Nav, setNav] = useState(true);
@@ -41,6 +41,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
 
   //Event listener for the links
   useEffect(() => {
+    !isScrolling && setNav(true);
     isScrollingDown && setNav(false);
     isScrollingUp && setNav(true);
     // document.addEventListener("scroll", () => {
