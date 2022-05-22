@@ -180,13 +180,13 @@ const Layout = ({ children, title, desc, keywords, image }) => {
                 <Link href="/">Home</Link>
               </div>
 
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+              {/* <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/shop">Shop</Link>
               </div>
 
               <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/join-us">Join Us</Link>
-              </div>
+              </div> */}
 
               <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/about">About</Link>
