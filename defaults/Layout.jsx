@@ -41,7 +41,9 @@ const Layout = ({ children, title, desc, keywords, image }) => {
 
   //Event listener for the links
   useEffect(() => {
-    !isScrolling && scrollY < 200 && setNav(true);
+    if (!isScrolling && scrollY < 150) {
+      setNav(true);
+    }
     isScrollingDown && setNav(false);
     isScrollingUp && setNav(true);
     // document.addEventListener("scroll", () => {
@@ -51,7 +53,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
     //     setNav(true);
     //   }
     // });
-  }, [isScrollingDown, isScrollingUp]);
+  }, [isScrollingDown, isScrollingUp, isScrolling]);
 
   return (
     <>

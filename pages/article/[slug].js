@@ -69,8 +69,8 @@ const Article = ({ article }) => {
                 "Will Callaghan"}
             </h3>
           </div>
-          <div className="text-neutral-600 poppins leading-loose lg:text-lg px-1 mt-4 mb-5 article-body">
-            {/* <ReactMarkdown className="article-body"> */}
+          <div className="text-neutral-600 leading-loose lg:text-lg px-1 mt-4 mb-5 article-body">
+            {/* <ReactMarkdown> */}
             {parse(article?.attributes?.content)}
             {/* </ReactMarkdown> */}
           </div>
