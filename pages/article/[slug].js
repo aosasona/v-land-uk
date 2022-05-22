@@ -4,6 +4,7 @@ import React from "react";
 import Moment from "react-moment";
 import { API } from "../../config/api";
 import Layout from "../../defaults/Layout";
+import ReactMarkdown from "react-markdown";
 const qs = require("qs");
 const parse = require("html-react-parser");
 
@@ -59,7 +60,7 @@ const Article = ({ article }) => {
             </h3>
           </div>
           <div className="text-neutral-600 poppins leading-loose lg:text-lg px-1 mt-4 mb-5">
-            {parse(article?.attributes?.content)}
+            <ReactMarkdown>{parse(article?.attributes?.content)}</ReactMarkdown>
           </div>
         </section>
         <section className="col-span-3">
