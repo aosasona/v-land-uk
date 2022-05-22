@@ -77,7 +77,7 @@ export default function Home({ articles, meta }) {
             </div>
             {/* POST BODY */}
             {/* <div className="relative px-3 pt-2 pb-4"> */}
-            <div className="relative px-3 pt-2 pb-4">
+            <div className="relative px-3 pt-2 pb-4 xl:space-y-1">
               <Moment
                 format="MMM Do YYYY"
                 className="text-[10px] lg:text-xs py-2"
@@ -85,17 +85,17 @@ export default function Home({ articles, meta }) {
                 {article.attributes.publishedAt}
               </Moment>
 
-              <h1 className="text-[1.75rem] lg:text-4xl leading-tight article-title">
+              <h1 className="relative text-[1.75rem] lg:text-4xl leading-tight article-title">
                 <Link href={`/article/${article.attributes.slug}`}>
                   {article.attributes.title}
                 </Link>
               </h1>
-              <p className="text-[11px] lg:text-xs mt-1 lg:mt-2 poppins">
+              <p className="text-[11px] lg:text-xs mt-1 lg:mt-3 poppins">
                 {article.attributes.description}
               </p>
             </div>
 
-            <div className="w-max text-white  bg-primary flex items-center gap-1 px-2 py-[5px] rounded-2xl mx-3 my-3">
+            <div className="w-max text-white  bg-primary flex items-center gap-1 px-2 py-[5px] rounded-2xl mx-3 mb-3">
               <FaUserCircle />
               <p className="text-[9px] lg:text-[10px] text-neutral-100 poppins font-semibold">
                 {article.attributes.author?.data?.attributes?.name ||
