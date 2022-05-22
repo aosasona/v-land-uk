@@ -20,6 +20,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import Link from "next/link";
+import { useScrollDirection } from "react-use-scroll-direction";
 import NavLink from "../components/NavLink";
 import { AnimatePresence, motion } from "framer-motion";
 import NavMenu from "../components/NavMenu";
@@ -27,6 +28,7 @@ import { useRouter } from "next/router";
 
 const Layout = ({ children, title, desc, keywords, image }) => {
   const router = useRouter();
+  const { isScrollingUp, isScrollingDown } = useScrollDirection();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [Open, setOpen] = useState(false);
   const [Nav, setNav] = useState(true);
@@ -39,14 +41,16 @@ const Layout = ({ children, title, desc, keywords, image }) => {
 
   //Event listener for the links
   useEffect(() => {
-    document.addEventListener("scroll", () => {
-      if (scrollY > 200) {
-        setNav(false);
-      } else {
-        setNav(true);
-      }
-    });
-  }, []);
+    isScrollingDown && setNav(false);
+    isScrollingUp && setNav(true);
+    // document.addEventListener("scroll", () => {
+    //   if (scrollY > 200) {
+    //     setNav(false);
+    //   } else {
+    //     setNav(true);
+    //   }
+    // });
+  }, [isScrollingDown, isScrollingUp]);
 
   return (
     <>
