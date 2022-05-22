@@ -20,6 +20,7 @@ const Article = ({ article }) => {
         article?.attributes?.keywords ||
         "vland, magazine, article, vegan, v-land, uk, brazil, veggy"
       }
+      image={article.attributes.media.data[0].attributes.formats.medium.url}
     >
       <Back />
       <main className="grid grid-cols-1 gap-2 lg:grid-cols-12 lg:gap-4">

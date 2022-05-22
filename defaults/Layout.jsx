@@ -64,20 +64,20 @@ const Layout = ({ children, title, desc, keywords, image }) => {
         <meta property="og:url" content="https://v-land.co.uk" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
-        <meta property="og:image" content="" />
+        <meta property="og:image" content={image} />
 
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://v-land.co.uk" />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={desc} />
-        <meta property="twitter:image" content="" />
+        <meta property="twitter:image" content={image} />
 
         <meta property="og:site_name" content="Frikax" />
         <meta property="og:site" content="https://v-land.co.uk" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={desc} />
-        <meta property="og:image" content="" />
-        <meta property="og:url" content="" />
+        <meta property="og:image" content={image} />
+        <meta property="og:url" content="https://v-land.co.uk" />
         <title>{title}</title>
       </Head>
 
@@ -231,6 +231,7 @@ export default Layout;
 Layout.defaultProps = {
   title: "V-Land UK",
   page: "Home",
+  image: "Logo.JPG",
   keywords: "vland, vegan, uk, green, nutritional, v-l, v-land, v",
   desc: "V-Land",
 };
