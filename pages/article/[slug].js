@@ -5,6 +5,7 @@ import Moment from "react-moment";
 import { API } from "../../config/api";
 import Layout from "../../defaults/Layout";
 import ReactMarkdown from "react-markdown";
+import Back from "../../components/Back";
 const qs = require("qs");
 const parse = require("html-react-parser");
 
@@ -12,7 +13,15 @@ const Article = ({ article }) => {
   const router = useRouter();
   //   console.log(article);
   return (
-    <Layout title="Article">
+    <Layout
+      title={article.attributes.title}
+      desc={article?.attributes?.description || article?.attributes?.content}
+      keywords={
+        article?.attributes?.keywords ||
+        "vland, magazine, article, vegan, v-land, uk, brazil, veggy"
+      }
+    >
+      <Back />
       <main className="grid grid-cols-1 gap-2 lg:grid-cols-12 lg:gap-4">
         <section className="lg:col-span-9">
           <div className="relative w-full max-w-[100%] h-[30vh] lg:h-[35vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden">

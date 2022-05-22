@@ -25,7 +25,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import NavMenu from "../components/NavMenu";
 import { useRouter } from "next/router";
 
-const Layout = ({ children, title, desc, keywords }) => {
+const Layout = ({ children, title, desc, keywords, image }) => {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [Open, setOpen] = useState(false);

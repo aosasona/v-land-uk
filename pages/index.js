@@ -42,12 +42,12 @@ export default function Home({ articles, meta }) {
         {articles.map((article, index) => (
           <div
             key={index}
-            className={`w-full bg-white rounded-xl drop-shadow-lg overflow-hidden article-container ${Sponsored(
+            className={`w-full bg-white rounded-xl drop-shadow-lg article-container ${Sponsored(
               article.attributes?.categories?.data
             )}`}
             data-aos="fade-up"
           >
-            <div className="relative">
+            <div className="relative rounded-t-xl overflow-hidden">
               <img
                 src={`${article.attributes?.media?.data[0]?.attributes?.formats?.medium?.url}`}
                 className="w-full aspect-square object-cover"
