@@ -23,7 +23,7 @@ const Article = ({ article }) => {
       image={article.attributes.media.data[0].attributes.formats.medium.url}
     >
       <Back />
-      <main className="grid grid-cols-1 gap-2 lg:grid-cols-12 lg:gap-4">
+      <main className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-4">
         <section className="lg:col-span-9">
           <div className="relative w-full max-w-[100%] h-[30vh] lg:h-[35vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden">
             <Image
