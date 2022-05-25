@@ -6,6 +6,7 @@ const { Provider } = GlobalContext;
 
 const GlobalProvider = ({ children }) => {
   const [Authors, setAuthors] = useState([]);
+  const [Articles, setArticles] = useState([]);
   const [Status, setStatus] = useState({
     loading: false,
     success: false,
@@ -36,7 +37,17 @@ const GlobalProvider = ({ children }) => {
   };
 
   return (
-    <Provider value={{ Authors, Status, setStatus, setAuthors, findUserByID }}>
+    <Provider
+      value={{
+        Authors,
+        Status,
+        Articles,
+        setArticles,
+        setStatus,
+        setAuthors,
+        findUserByID,
+      }}
+    >
       {children}
     </Provider>
   );
