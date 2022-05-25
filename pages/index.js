@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Moment from "react-moment";
 import Head from "next/head";
 import Image from "next/image";
@@ -10,8 +10,10 @@ const qs = require("qs");
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { FaUserCircle } from "react-icons/fa";
-
+import { GlobalContext } from "../context/GlobalContext";
 export default function Home({ articles, meta }) {
+  const { findUserByID } = useContext(GlobalContext);
+
   useEffect(() => {
     AOS.init({
       duration: 500,
@@ -35,23 +37,23 @@ export default function Home({ articles, meta }) {
   };
   return (
     <Layout>
-      <div
-        className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5
-      mb-[5vh]"
-      >
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5">
         {articles.map((article, index) => (
           <div
             key={index}
-            className={`w-full bg-white rounded-xl flex flex-col justify-between gap-2 drop-shadow-md article-container ${Sponsored(
+            className={`w-full flex flex-col bg-white rounded-xl drop-shadow-md article-container ${Sponsored(
               article.attributes?.categories?.data
             )}`}
-            data-aos="fade-up"
           >
-            <div className="relative block rounded-t-xl overflow-hidden">
+            {/* POST IMAGE */}
+            <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
               <img
                 src={`${article.attributes?.media?.data[0]?.attributes?.formats?.medium?.url}`}
-                className="w-full aspect-square object-cover"
-                alt={`${article.attributes?.media?.data[0]?.attributes?.alternativeText}`}
+                className="w-full h-full object-cover"
+                alt={`${
+                  article.attributes?.media?.data[0]?.attributes
+                    ?.alternativeText || ""
+                }`}
               />
               <div className="absolute flex flex-wrap gap-2 bottom-3 w-[94%] mx-auto right-0 left-0">
                 {/* TAGS/CATEGORIES */}
@@ -76,33 +78,38 @@ export default function Home({ articles, meta }) {
               </div>
             </div>
             {/* POST BODY */}
-            {/* <div className="relative px-3 pt-2 pb-4"> */}
-            <div className="relative px-3 pt-2 pb-4 xl:space-y-1">
-              <Moment
-                format="MMM Do YYYY"
-                className="text-[10px] lg:text-xs py-2"
-              >
-                {article.attributes.publishedAt}
-              </Moment>
 
-              <h1 className="relative text-[1.75rem] lg:text-4xl leading-tight article-title">
+            <div className="article-body">
+              <h1 className="text-[1.75rem] lg:text-4xl leading-tight article-title">
                 <Link href={`/article/${article.attributes.slug}`}>
                   {article.attributes.title}
                 </Link>
               </h1>
-              <p className="text-[11px] lg:text-xs mt-1 lg:mt-3 poppins">
+              <p className="lg:text-xs article-desc">
                 {article.attributes.description}
               </p>
             </div>
 
-            <div className="w-max text-white  bg-primary flex items-center gap-1 px-2 py-[5px] rounded-2xl mx-3 mb-3">
-              <FaUserCircle />
-              <p className="text-[9px] lg:text-[10px] text-neutral-100 poppins font-semibold">
-                {article.attributes.author?.data?.attributes?.name ||
-                  "Will Callaghan"}
-              </p>
+            <div className="article-author">
+              <img
+                src={
+                  findUserByID(article?.attributes?.author)?.attributes?.image
+                    ?.data?.attributes?.formats?.small?.url || "/User.svg"
+                }
+                alt="Author"
+                className="w-7 aspect-square object-cover rounded-full"
+              />
+
+              <div className="article-author-data">
+                <p>
+                  {findUserByID(article?.attributes?.author)?.attributes
+                    ?.fullname || "Will Callaghan"}
+                </p>
+                <Moment format="MMM Do YYYY" className="article-date">
+                  {article.attributes.publishedAt}
+                </Moment>
+              </div>
             </div>
-            {/* </div> */}
           </div>
         ))}
       </div>
@@ -116,6 +123,7 @@ export async function getServerSideProps({ req, res }) {
     "public, s-maxage=10, stale-while-revalidate=59"
   );
 
+  //Get data for articles
   const filters = qs.stringify({
     populate: "*",
   });
@@ -123,7 +131,8 @@ export async function getServerSideProps({ req, res }) {
   const response = await fetch(`${API}/articles?${filters}`);
   const data = await response.json();
 
-  // console.log(data.data);
+  //Get data for users
+
   return {
     props: {
       articles: data.data,

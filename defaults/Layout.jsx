@@ -25,6 +25,7 @@ import NavLink from "../components/NavLink";
 import { AnimatePresence, motion } from "framer-motion";
 import NavMenu from "../components/NavMenu";
 import { useRouter } from "next/router";
+import Footer from "../components/Footer";
 
 const Layout = ({ children, title, desc, keywords, image }) => {
   const router = useRouter();
@@ -159,6 +160,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
       <main className="w-[90%] lg:w-4/5 2xl:w-4/6 mx-auto mt-[16vh] lg:mt-[17vh]">
         {children}
       </main>
+      <Footer />
 
       {/* NAVIGATION DRAWER */}
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
@@ -197,6 +199,10 @@ const Layout = ({ children, title, desc, keywords, image }) => {
 
               <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
                 <Link href="/about">About</Link>
+              </div>
+
+              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+                <Link href="/team">Team</Link>
               </div>
 
               <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">

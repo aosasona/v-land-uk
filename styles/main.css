@@ -10,10 +10,12 @@
   font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important;
   box-sizing: border-box;
   -webkit-appearance: none !important;
+  /* border: 1px solid red !important; */
 }
 html,
 body {
   font-weight: 500;
+  height: 100%;
 }
 nav ::-webkit-scrollbar {
   display: none;
@@ -32,16 +34,61 @@ nav ::-webkit-scrollbar {
 .sponsored h1 {
   color: white !important;
 }
+.article-container {
+  gap: 0.5rem;
+}
+.article-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  /* font-family: "Poppins", "Segoe UI", Tahoma !important; */
+  padding-inline: 0.5rem;
+  padding-bottom: 0.6rem;
+}
+.article-desc {
+  font-size: 11px;
+  font-weight: 500;
+  font-family: "Poppins", "Segoe UI", Tahoma !important;
+}
+.article-author {
+  width: max-content;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.3rem 0.4rem 0.3rem 0.4rem;
+  border-radius: 2rem;
+  margin-top: auto !important;
+  margin-bottom: 0.5rem;
+  margin-inline: 0.4rem;
+}
+.article-author-data {
+  display: flex;
+  flex-direction: column;
+}
+.article-author-data p {
+  font-size: 11px;
+  color: var(--primary);
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+  font-weight: 600;
+}
+.article-date {
+  font-size: 9px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+  color: rgb(90, 90, 90);
+}
+.sponsored .article-date {
+  color: white;
+}
+.sponsored .article-author-data p {
+  font-size: 13px;
+  color: white;
+}
 .article-title {
   font-weight: 600 !important;
   transition: all 0.75s ease-in-out;
   color: var(--primary);
 }
-/* .article-title:hover,
-.article-title:focus {
-  text-decoration: underline;
-  text-underline-offset: 0.25rem;
-} */
 .article-title::before {
   content: "";
   /* position: absolute; */
@@ -59,9 +106,6 @@ nav ::-webkit-scrollbar {
   transform: scaleX(1);
 }
 
-.article-body {
-  font-family: "Poppins", "Segoe UI", Tahoma !important;
-}
 .tag {
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
   font-weight: 700 !important;
@@ -82,7 +126,3 @@ nav ::-webkit-scrollbar {
     transform: scaleY(0);
   }
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
