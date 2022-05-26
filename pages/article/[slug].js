@@ -189,7 +189,7 @@ const Article = ({ article }) => {
                     <WhatsappShareButton
                       url={`${SITE_URL}/article/${Slug}`}
                       title={Title}
-                      separator="-"
+                      separator=" - "
                     >
                       <FaWhatsapp size={18} />
                     </WhatsappShareButton>
