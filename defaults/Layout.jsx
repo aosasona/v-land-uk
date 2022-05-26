@@ -210,22 +210,22 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               </div>
 
               <div className="flex py-3 space-x-4">
-                <div className="p-2 text-white bg-primary">
+                <div className="p-2 text-white bg-primary rounded-lg">
                   <a href="http://instagramm.com/vlanduk">
                     <FaInstagram size={18} />
                   </a>
                 </div>
-                <div className="p-2 text-white bg-primary">
+                <div className="p-2 text-white bg-primary rounded-lg">
                   <a href="https://www.facebook.com/V-Land-UK-100137252369546">
                     <FaFacebookF size={18} />
                   </a>
                 </div>
-                <div className="p-2 text-white bg-primary">
+                <div className="p-2 text-white bg-primary rounded-lg">
                   <a href="https://twitter.com/vlandukmag">
                     <FaTwitter size={18} />
                   </a>
                 </div>
-                <div className="p-2 text-white bg-primary">
+                <div className="p-2 text-white bg-primary rounded-lg">
                   <a href="https://www.linkedin.com/company/v-land-uk">
                     <FaLinkedinIn size={18} />
                   </a>

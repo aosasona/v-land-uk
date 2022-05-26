@@ -20,7 +20,7 @@ const Footer = () => {
     e.preventDefault();
   };
   return (
-    <footer className="w-full bg-green-50 text-neutral-800 py-12 lg:py-16 px-4 mt-[7vh]">
+    <footer className="w-full bg-green-50 text-neutral-800 py-12 lg:py-16 px-4 mt-[8vh] lg:mt-[10vh]">
       <div className="w-full lg:w-4/6 2xl:w-3/5 mx-auto flex flex-col lg:flex-row gap-12 lg:gap-14 items-center justify-center lg:justify-evenly">
         {/* Sitemap */}
         <div className="flex justify-center items-center lg:gap-5">

@@ -57,22 +57,22 @@ const NavMenu = () => {
             </section>
             <section className="col-span-2">
               <div className="grid grid-cols-4 h-min gap-4 mt-3 cursor-pointer">
-                <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 transition-all">
+                <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 rounded-md transition-all">
                   <a href="http://instagramm.com/vlanduk">
                     <FaInstagram size={15} />
                   </a>
                 </div>
-                <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 transition-all">
+                <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 rounded-md transition-all">
                   <a href="https://www.facebook.com/V-Land-UK-100137252369546">
                     <FaFacebookF size={15} />
                   </a>
                 </div>
-                <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 transition-all">
+                <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 rounded-md transition-all">
                   <a href="https://twitter.com/vlandukmag">
                     <FaTwitter size={15} />
                   </a>
                 </div>
-                <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 transition-all">
+                <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 rounded-md transition-all">
                   <a href="https://www.linkedin.com/company/v-land-uk">
                     <FaLinkedinIn size={15} />
                   </a>
