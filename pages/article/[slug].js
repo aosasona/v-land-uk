@@ -1,17 +1,47 @@
+/* eslint-disable @next/next/no-img-element */
+import { useContext, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
 import Moment from "react-moment";
-import { API } from "../../config/api";
+import { API, SITE_URL } from "../../config/api";
 import Layout from "../../defaults/Layout";
+import { GlobalContext } from "../../context/GlobalContext";
 import ReactMarkdown from "react-markdown";
 import Back from "../../components/Back";
+import ArticleCard from "../../components/ArticleCard";
 const qs = require("qs");
 const parse = require("html-react-parser");
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  TelegramShareButton,
+} from "react-share";
+import {
+  FaFacebookF,
+  FaTelegram,
+  FaTelegramPlane,
+  FaTwitter,
+  FaWhatsapp,
+} from "react-icons/fa";
+import { RiShareBoxFill } from "react-icons/ri";
+import { motion, AnimatePresence } from "framer-motion";
+import { BiDotsHorizontalRounded } from "react-icons/bi";
 
 const Article = ({ article }) => {
   const router = useRouter();
-  //   console.log(article);
+
+  const { findUserByID, Articles } = useContext(GlobalContext);
+
+  // Share State
+  const [ShareState, setShareState] = useState(false);
+
+  const Others = Articles.filter((Article) => Article?.id !== article.id);
+
+  //Article Data
+  const Title = article.attributes.title;
+  const Slug = article.attributes.slug;
+
   return (
     <Layout
       title={article.attributes.title}
@@ -23,60 +53,155 @@ const Article = ({ article }) => {
       image={article.attributes.media.data[0].attributes.formats.medium.url}
     >
       <Back />
-      <main className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-4">
-        <section className="lg:col-span-9">
+      <main className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-5">
+        <section className="lg:col-span-8">
+          {/* IMAGE & CATEGORIES */}
           <div className="relative w-full max-w-[100%] aspect-square lg:h-[40vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden object-cover">
             <Image
               src={
-                article.attributes.media.data[0].attributes.formats.large.url
+                article?.attributes?.media?.data[0]?.attributes?.formats?.large
+                  ?.url ||
+                article?.attributes?.media?.data[0]?.attributes?.formats?.medium
+                  ?.url ||
+                "/Placeholder.png"
               }
-              alt={article.attributes.media.data[0].attributes.alternativeText}
+              alt={
+                article?.attributes?.media?.data[0]?.attributes
+                  ?.alternativeText || "Blog image"
+              }
               layout="fill"
             />
-            <div className="absolute flex flex-wrap gap-2 bottom-2 lg:bottom-4 w-[95%] mx-auto right-0 left-0">
+            {/* CATEGORIES */}
+            <div className="absolute flex flex-wrap gap-2 bottom-3 lg:bottom-4 w-[93%] mx-auto right-0 left-0">
               {article.attributes?.categories?.data.length > 0 &&
-                article.attributes.categories.data.map((category, current) => (
-                  <p
-                    key={current}
-                    className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
-                      category.attributes.name === "Sponsored"
-                        ? "text-white bg-purple-600"
-                        : "text-primary bg-green-50"
-                    }`}
-                    onClick={() =>
-                      router.push(`/category/${category.attributes.slug}`)
-                    }
-                  >
-                    {category.attributes.name}
-                  </p>
-                ))}
+                article?.attributes?.categories?.data?.map(
+                  (category, current) => (
+                    <p
+                      key={current}
+                      className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
+                        category.attributes.name === "Sponsored"
+                          ? "text-white bg-purple-600"
+                          : "text-primary bg-green-50"
+                      }`}
+                      onClick={() =>
+                        router.push(`/category/${category.attributes.slug}`)
+                      }
+                    >
+                      {category.attributes.name}
+                    </p>
+                  )
+                )}
             </div>
           </div>
 
-          <h1 className="text-4xl lg:text-6xl mt-2 lg:mt-3">
+          {/* AUTHOR AND DATE */}
+          <div className="flex items-center gap-x-2 px-2 my-4">
+            <img
+              src={
+                findUserByID(article?.attributes?.author)?.attributes?.image
+                  ?.data?.attributes?.formats?.small?.url || "/User.svg"
+              }
+              alt="Author"
+              className="w-10 aspect-square object-cover rounded-full"
+              loading="lazy"
+            />
+            <div className="flex flex-col gap-y-[2px]">
+              <p>
+                {findUserByID(article?.attributes?.author)?.attributes
+                  ?.fullname || "V-Land UK"}
+              </p>
+              {article?.attributes?.publishedAt && (
+                <Moment
+                  format="MMM Do YYYY"
+                  className="text-[11px] font-normal poppins"
+                >
+                  {article?.attributes?.publishedAt}
+                </Moment>
+              )}
+            </div>
+          </div>
+
+          {/* ARTICLE TITLE */}
+          <h1 className="text-primary text-4xl lg:text-6xl mt-2 lg:mt-3 mb-0 px-2">
             {article.attributes.title}
           </h1>
-          {/* AUTHOR AND DATE */}
-          <div className="flex items-center space-x-2 mt-3">
-            <Moment
-              format="MMM Do YYYY"
-              className="text-[10px] lg:text-xs py-1 lg:py-[6px] px-3 lg:px-4 bg-primary bg-opacity-[0.08] text-primary rounded-2xl"
-            >
-              {article.attributes.publishedAt}
-            </Moment>
-            <h3 className="poppins text-xs lg:text-[13px] font-semibold text-primary text-opacity-80 px-1">
-              {article?.attributes?.author?.data?.attributes?.name ||
-                "Will Callaghan"}
-            </h3>
-          </div>
-          <div className="max-w-[100%] overflow-x-hidden text-neutral-600 leading-loose lg:text-lg px-1 mt-4 mb-5 article-body">
+
+          <div className="max-w-[100%] overflow-x-hidden text-neutral-600 leading-loose lg:text-lg px-1 mt-3 lg:mt-4 mb-5 article-body">
             {/* <ReactMarkdown> */}
             {parse(article?.attributes?.content)}
             {/* </ReactMarkdown> */}
           </div>
+
+          <div className="fixed bottom-[15vh] right-2 flex flex-col gap-8 bg-primary text-white bg-opacity-[0.9] rounded-xl py-7 px-4 z-[99]">
+            <div onClick={() => setShareState((current) => !current)}>
+              {!ShareState ? (
+                <RiShareBoxFill size={18} />
+              ) : (
+                <BiDotsHorizontalRounded />
+              )}
+            </div>
+            <AnimatePresence>
+              {ShareState && (
+                <motion.div
+                  initial={{
+                    opacity: 0,
+                    y: -20,
+                    originY: "top",
+                    height: 0,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    originY: "top",
+                    height: "100%",
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -20,
+                    originY: "top",
+                    height: 0,
+                  }}
+                  transition={{ duration: 0.2 }}
+                  className="flex flex-col gap-8"
+                >
+                  <FacebookShareButton
+                    url={`${SITE_URL}/article/${Slug}`}
+                    quote={Title}
+                  >
+                    <FaFacebookF size={18} />
+                  </FacebookShareButton>
+                  <TwitterShareButton
+                    url={`${SITE_URL}/article/${Slug}`}
+                    title={Title}
+                    related={["v-land", "vegan", "UK", "v-land uk", "magazine"]}
+                  >
+                    <FaTwitter size={18} />
+                  </TwitterShareButton>
+                  <WhatsappShareButton
+                    url={`${SITE_URL}/article/${Slug}`}
+                    title={Title}
+                    separator="-"
+                  >
+                    <FaWhatsapp size={18} />
+                  </WhatsappShareButton>
+                  <TelegramShareButton
+                    url={`${SITE_URL}/article/${Slug}`}
+                    title={Title}
+                  >
+                    <FaTelegramPlane size={18} />
+                  </TelegramShareButton>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </section>
-        <section className="col-span-3">
-          <h1 className="text-5xl mt-2">More</h1>
+        <section className="col-span-4">
+          <h1 className="text-4xl lg:text-5xl mt-2 px-2">For You</h1>
+          <div className="grid grid-cols-2 lg:grid-cols-1 mt-4 gap-3 lg:gap-4 lg:h-[100vh] overflow-y-scroll px-2 pb-5">
+            {Others.slice(0, 10).map((current, index) => (
+              <ArticleCard key={index} article={current} />
+            ))}
+          </div>
         </section>
       </main>
     </Layout>

@@ -117,6 +117,14 @@ nav ::-webkit-scrollbar {
 .nav-menu-link:hover {
   color: var(--primary);
 }
+::-webkit-scrollbar {
+  width: 4px !important;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+  background-color: var(--primary);
+}
 @keyframes FadeOutUp {
   0% {
     display: block;

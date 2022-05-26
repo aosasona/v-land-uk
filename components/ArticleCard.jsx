@@ -34,10 +34,14 @@ const ArticleCard = ({ article }) => {
       {/* POST IMAGE */}
       <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
         <img
-          src={`${article.attributes?.media?.data[0]?.attributes?.formats?.medium?.url}`}
+          src={`${
+            article.attributes?.media?.data[0]?.attributes?.formats?.medium
+              ?.url || "/Placeholder.png"
+          }`}
           className="w-full h-full object-cover"
           alt={`${
             article.attributes?.media?.data[0]?.attributes?.alternativeText ||
+            article?.attributes?.title ||
             ""
           }`}
         />
@@ -66,11 +70,11 @@ const ArticleCard = ({ article }) => {
       <div className="article-body">
         <h1 className="text-[1.75rem] lg:text-4xl leading-tight article-title">
           <Link href={`/article/${article.attributes.slug}`}>
-            {article.attributes.title}
+            {article?.attributes?.title}
           </Link>
         </h1>
         <p className="lg:text-xs article-desc">
-          {article.attributes.description}
+          {article?.attributes?.description}
         </p>
       </div>
 
@@ -87,11 +91,13 @@ const ArticleCard = ({ article }) => {
         <div className="article-author-data">
           <p>
             {findUserByID(article?.attributes?.author)?.attributes?.fullname ||
-              "Will Callaghan"}
+              "V-Land UK"}
           </p>
-          <Moment format="MMM Do YYYY" className="article-date">
-            {article.attributes.publishedAt}
-          </Moment>
+          {article?.attributes?.publishedAt && (
+            <Moment format="MMM Do YYYY" className="article-date">
+              {article?.attributes?.publishedAt}
+            </Moment>
+          )}
         </div>
       </div>
     </div>

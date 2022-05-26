@@ -1,6 +1,8 @@
 import axios from "axios";
-import { createContext, useState } from "react";
+const qs = require("qs");
+import { createContext, useEffect, useState } from "react";
 import { API } from "../config/api";
+import { PAGINATION_LIMIT } from "../config/meta";
 const GlobalContext = createContext(null);
 const { Provider } = GlobalContext;
 
@@ -13,6 +15,30 @@ const GlobalProvider = ({ children }) => {
     error: false,
     text: "",
   });
+
+  //Get Articles again
+  useEffect(() => {
+    if (Articles.length == 0) {
+      const filters = qs.stringify({
+        populate: "*",
+        pagination: {
+          pageSize: PAGINATION_LIMIT,
+        },
+      });
+
+      axios
+        .get(`${API}/articles?${filters}`)
+        .then((res) => {
+          setArticles(res.data.data);
+          console.log(res.data.data);
+        })
+        .catch((err) => {
+          setStatus((prev) => {
+            return { ...prev, error: true };
+          });
+        });
+    }
+  }, [Articles.length, Articles]);
 
   //Get all authors
   if (Authors.length == 0) {

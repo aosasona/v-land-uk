@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { useContext, useEffect } from "react";
 import Layout from "../defaults/Layout";
-import { API, BASE_URL } from "../config/api";
-import { PAGINATION_LIMIT } from "../config/meta";
-const qs = require("qs");
-import AOS from "aos";
-import "aos/dist/aos.css";
-import { GlobalContext } from "../context/GlobalContext";
 import ArticleCard from "../components/ArticleCard";
 import Pagination from "../components/Pagination";
+import { GlobalContext } from "../context/GlobalContext";
+import { API, BASE_URL } from "../config/api";
+import { PAGINATION_LIMIT } from "../config/meta";
+import AOS from "aos";
+import "aos/dist/aos.css";
+const qs = require("qs");
 
 export default function Home({ articles, meta }) {
   const { findUserByID, setArticles } = useContext(GlobalContext);
@@ -25,7 +25,7 @@ export default function Home({ articles, meta }) {
 
   return (
     <Layout>
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 gap-y-4 lg:gap-5 lg:gap-y-6">
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5 lg:gap-y-6">
         {articles.map((article, index) => (
           <ArticleCard article={article} key={index} />
         ))}
