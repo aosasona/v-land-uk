@@ -79,7 +79,7 @@ const Article = ({ article }) => {
                     <p
                       key={current}
                       className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
-                        category.attributes.name === "Sponsored"
+                        category.attributes.name.toLowerCase() === "sponsored"
                           ? "text-white bg-purple-600"
                           : "text-primary bg-green-50"
                       }`}
