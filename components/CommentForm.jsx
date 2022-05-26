@@ -1,8 +1,10 @@
-import React from "react";
 import { useState } from "react";
+import axios from "axios";
+import { API } from "../config/api";
 import Loader from "./Loader";
+import { ToastContainer, toast } from "react-toastify";
 
-const CommentForm = ({ id, slug }) => {
+const CommentForm = ({ id, slug, setComments }) => {
   const [Data, setData] = useState({
     email: "",
     name: "",
@@ -15,10 +17,46 @@ const CommentForm = ({ id, slug }) => {
     setData({ ...Data, [e.target.name]: e.target.value });
   };
 
+  //Toast options
+  const options = {
+    position: "top-right",
+    autoClose: 4000,
+    draggable: true,
+    pauseOnHover: true,
+    closeOnClick: true,
+  };
+
   //Handle form submission
   const formHandler = (e) => {
     e.preventDefault();
-    console.log(Data);
+
+    const url = `${API}/feedbacks`; //Feedback url
+
+    //Feedback data to be sent
+    const data = {
+      data: {
+        email: Data.email,
+        name: Data?.name || "Anonymous",
+        comment: Data.comment,
+        articleId: id,
+        articleSlug: slug,
+      },
+    };
+
+    //Make API call to back-end
+    setLoading(true); //set loading to true
+    axios
+      .post(url, data)
+      .then((res) => {
+        setLoading(false); //Stop loading
+        setComments((prev) => [...prev, res.data.data]); //Add to the comments array
+        setData({ email: "", name: "", comment: "" }); //Reset the state
+        toast.success("Comment added successfully", options); //Show toast
+      })
+      .catch((err) => {
+        setLoading(false); //Stop loading
+        toast.error("Something went wrong", options); //Show error toast
+      });
   };
 
   //Input style
@@ -26,7 +64,7 @@ const CommentForm = ({ id, slug }) => {
     "w-full px-4 py-4 mb-4 text-xs lg:text-sm leading-tight text-primary placeholder-neutral-300 border-2 border-primary border-opacity-30 rounded-lg focus:outline-none focus:border-opacity-100 transition-all";
 
   return (
-    <main className="px-2 py-3">
+    <main className="px-2 mt-3 mb-6">
       <h1 className="text-2xl lg:text-4xl">What do you think?</h1>
       {/* <h3 className="text-[11px] text-primary poppins pt-2">
         Let other readers know what you think about this topic or article.
@@ -64,6 +102,7 @@ const CommentForm = ({ id, slug }) => {
           {!Loading ? "Submit" : <Loader />}
         </button>
       </form>
+      <ToastContainer />
     </main>
   );
 };

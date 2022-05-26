@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import "../styles/main.css";
 import "../styles/nprogress.css";
+import "react-toastify/dist/ReactToastify.css";
 import Router from "next/router";
 import nProgress from "nprogress";
 import { ChakraProvider } from "@chakra-ui/react";

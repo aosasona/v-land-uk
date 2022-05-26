@@ -20,7 +20,7 @@ const Footer = () => {
     e.preventDefault();
   };
   return (
-    <footer className="w-full bg-green-50 text-neutral-800 py-12 lg:py-16 px-4 mt-[8vh] lg:mt-[10vh]">
+    <footer className="w-full bg-green-50 bg-opacity-70 text-neutral-800 py-12 lg:py-16 px-4 mt-[8vh] lg:mt-[10vh]">
       <div className="w-full lg:w-4/6 2xl:w-3/5 mx-auto flex flex-col lg:flex-row gap-12 lg:gap-14 items-center justify-center lg:justify-evenly">
         {/* Sitemap */}
         <div className="flex justify-center items-center lg:gap-5">
@@ -64,10 +64,10 @@ const Footer = () => {
 
         {/* Email subscriptions */}
         <div className="lg:w-[60%] 2xl:w-3/6">
-          <h2 className="text-3xl lg:text-4xl text-center lg:text-left mb-1 px-1 lg:px-2">
+          <h2 className="text-4xl lg:text-4xl text-center lg:text-left mb-1 px-1 lg:px-2">
             Subscribe
           </h2>
-          <h4 className="text-neutral-500 text-[11px] lg:text-xs font-medium text-center lg:text-left my-5 px-3">
+          <h4 className="w-[95%] mx-auto text-primary text-opacity-70 text-[11px] lg:text-xs font-normal tracking-wider text-center lg:text-left my-5 px-3">
             Subscribe to our newsletter to receive the latest news and updates
             directly from us in your inbox. Best part? It&apos;s free!
           </h4>
@@ -92,7 +92,7 @@ const Footer = () => {
           </form>
         </div>
       </div>
-      <div className="text-center text-[10px] font-medium lg:font-medium poppins mt-8 lg:mt-12">
+      <div className="text-center text-[10px] font-medium lg:font-medium poppins mt-10 lg:mt-12">
         &copy;{year} V-Land UK. All rights reserved.
       </div>
     </footer>

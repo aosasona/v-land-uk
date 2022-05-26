@@ -28,6 +28,7 @@ import { RiShareBoxFill } from "react-icons/ri";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import CommentForm from "../../components/CommentForm";
+import CommentsArea from "../../components/CommentsArea";
 
 const Article = ({ article }) => {
   const router = useRouter();
@@ -37,6 +38,10 @@ const Article = ({ article }) => {
   // Share State
   const [ShareState, setShareState] = useState(false);
 
+  // Comments
+  const [Comments, setComments] = useState([]);
+
+  //Other Articles
   const Others = Articles.filter((Article) => Article?.id !== article.id);
 
   //Article Data
@@ -133,8 +138,18 @@ const Article = ({ article }) => {
             {/* </ReactMarkdown> */}
           </div>
 
-          {/* COMMENT SECTION */}
-          <CommentForm id={article.id} slug={article.attributes.slug} />
+          {/* ARTICLE COMMENTS */}
+          <CommentsArea
+            id={article.id}
+            comments={Comments}
+            setComments={setComments}
+          />
+          {/* COMMENTS POSTING SECTION */}
+          <CommentForm
+            id={article.id}
+            slug={article.attributes.slug}
+            setComments={setComments}
+          />
 
           {/* SHARE */}
           <AnimateSharedLayout>
@@ -213,7 +228,7 @@ const Article = ({ article }) => {
         <section className="col-span-4">
           <h1 className="text-4xl lg:text-5xl mt-2 px-2">Read More</h1>
           <div className="grid grid-cols-2 lg:grid-cols-1 mt-4 gap-3 lg:gap-4 lg:h-[100vh] overflow-y-scroll px-2 pb-5">
-            {Others.slice(0, 16).map((current, index) => (
+            {Others.slice(0, 6).map((current, index) => (
               <ArticleCard key={index} article={current} />
             ))}
           </div>

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { GlobalContext } from "../context/GlobalContext";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Moment from "react-moment";
 
@@ -26,7 +27,10 @@ const ArticleCard = ({ article }) => {
   };
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container ${Sponsored(
         article.attributes?.categories?.data
       )}`}
@@ -100,7 +104,7 @@ const ArticleCard = ({ article }) => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
