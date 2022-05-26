@@ -7,7 +7,6 @@
 
 * {
   -webkit-font-smoothing: antialiased;
-  font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important;
   box-sizing: border-box;
   -webkit-appearance: none !important;
   /* border: 1px solid red !important; */
@@ -16,6 +15,7 @@ html,
 body {
   font-weight: 500;
   height: 100%;
+  font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important;
 }
 nav ::-webkit-scrollbar {
   display: none;
@@ -41,7 +41,7 @@ nav ::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  /* font-family: "Poppins", "Segoe UI", Tahoma !important; */
+  font-family: "Poppins", Arial, Helvetica, sans-serif, "Segoe UI", Tahoma !important;
   padding-inline: 0.7rem;
   padding-bottom: 0.6rem;
 }
@@ -50,6 +50,18 @@ nav ::-webkit-scrollbar {
   font-weight: 500;
   font-family: "Poppins", "Segoe UI", Tahoma !important;
 }
+.article-preview {
+  color: rgba(90, 90, 90);
+  max-width: 100%;
+  font-weight: 400;
+  font-family: "Poppins", "Segoe UI", Tahoma !important;
+  line-height: 2.2;
+  padding-inline: 0.5rem;
+  overflow-x: hidden;
+}
+/* .article-poppins {
+  font-family: "Poppins", Arial, Helvetica, sans-serif, "Segoe UI", Tahoma !important;
+} */
 .article-author {
   width: max-content;
   color: black;
@@ -88,6 +100,7 @@ nav ::-webkit-scrollbar {
   font-weight: 600 !important;
   transition: all 0.75s ease-in-out;
   color: var(--primary);
+  font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important;
 }
 .article-title::before {
   content: "";
@@ -117,6 +130,27 @@ nav ::-webkit-scrollbar {
 .nav-menu-link:hover {
   color: var(--primary);
 }
+.loader-button {
+  animation: 300ms Loader linear infinite;
+  width: 20px;
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  border: 2px solid rgb(90, 90, 90, 0.2);
+  border-top: 2px solid white;
+  border-left: 2px solid white;
+  border-radius: 50%;
+}
+.loader-normal {
+  width: 20px;
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  border: 2px solid rgb(90, 90, 90, 0.15);
+  border-top: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+  border-radius: 50%;
+}
 ::-webkit-scrollbar {
   width: 4px !important;
   background-color: transparent;
@@ -124,6 +158,11 @@ nav ::-webkit-scrollbar {
 ::-webkit-scrollbar-thumb:hover,
 ::-webkit-scrollbar-thumb:active {
   background-color: var(--primary);
+}
+@keyframes Loader {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 @keyframes FadeOutUp {
   0% {

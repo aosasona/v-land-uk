@@ -27,6 +27,7 @@ import {
 import { RiShareBoxFill } from "react-icons/ri";
 import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
+import CommentForm from "../../components/CommentForm";
 
 const Article = ({ article }) => {
   const router = useRouter();
@@ -126,12 +127,16 @@ const Article = ({ article }) => {
             {article.attributes.title}
           </h1>
 
-          <div className="max-w-[100%] overflow-x-hidden text-neutral-600 leading-loose lg:text-lg px-1 mt-3 lg:mt-4 mb-5 article-body">
+          <div className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5">
             {/* <ReactMarkdown> */}
             {parse(article?.attributes?.content)}
             {/* </ReactMarkdown> */}
           </div>
 
+          {/* COMMENT SECTION */}
+          <CommentForm id={article.id} slug={article.attributes.slug} />
+
+          {/* SHARE */}
           <AnimateSharedLayout>
             <motion.div
               layout
@@ -206,9 +211,9 @@ const Article = ({ article }) => {
           </AnimateSharedLayout>
         </section>
         <section className="col-span-4">
-          <h1 className="text-4xl lg:text-5xl mt-2 px-2">For You</h1>
+          <h1 className="text-4xl lg:text-5xl mt-2 px-2">Read More</h1>
           <div className="grid grid-cols-2 lg:grid-cols-1 mt-4 gap-3 lg:gap-4 lg:h-[100vh] overflow-y-scroll px-2 pb-5">
-            {Others.slice(0, 10).map((current, index) => (
+            {Others.slice(0, 16).map((current, index) => (
               <ArticleCard key={index} article={current} />
             ))}
           </div>
