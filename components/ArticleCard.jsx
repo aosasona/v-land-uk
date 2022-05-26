@@ -7,7 +7,7 @@ import Link from "next/link";
 import Moment from "react-moment";
 
 const ArticleCard = ({ article }) => {
-  const { findUserByID, setArticles } = useContext(GlobalContext);
+  const { findUserByID } = useContext(GlobalContext);
   const router = useRouter();
 
   //FIND SPONSORED POSTS
@@ -27,7 +27,7 @@ const ArticleCard = ({ article }) => {
 
   return (
     <div
-      className={`w-full flex flex-col bg-white rounded-xl drop-shadow-md article-container ${Sponsored(
+      className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container ${Sponsored(
         article.attributes?.categories?.data
       )}`}
     >
