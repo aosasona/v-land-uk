@@ -29,6 +29,7 @@ import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import CommentForm from "../../components/CommentForm";
 import CommentsArea from "../../components/CommentsArea";
+import Recommendation from "../../components/Recommendation";
 
 const Article = ({ article }) => {
   const router = useRouter();
@@ -229,7 +230,7 @@ const Article = ({ article }) => {
           <h1 className="text-4xl lg:text-5xl mt-2 px-2">Read More</h1>
           <div className="grid grid-cols-2 lg:grid-cols-1 mt-4 gap-3 lg:gap-4 lg:h-[100vh] overflow-y-scroll px-2 pb-5">
             {Others.slice(0, 6).map((current, index) => (
-              <ArticleCard key={index} article={current} />
+              <Recommendation key={index} article={current} />
             ))}
           </div>
         </section>

@@ -7,33 +7,16 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Moment from "react-moment";
 
-const ArticleCard = ({ article }) => {
+const Recommendation = ({ article }) => {
   const { findUserByID } = useContext(GlobalContext);
   const router = useRouter();
-
-  //FIND SPONSORED POSTS
-  const Sponsored = (post) => {
-    const AddClass = post.some((cat) => {
-      if (cat.attributes.name.toLowerCase() === "sponsored") {
-        return true;
-      } else {
-        return false;
-      }
-    });
-
-    if (AddClass) {
-      return "sponsored col-span-2";
-    }
-  };
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container ${Sponsored(
-        article.attributes?.categories?.data
-      )}`}
+      className={`w-full flex flex-col bg-white rounded-xl shadow-md lg:drop-shadow-none lg:shadow-lg article-container`}
     >
       {/* POST IMAGE */}
       <div className="relative w-full aspect-square object-cover block rounded-t-xl overflow-hidden">
@@ -106,4 +89,4 @@ const ArticleCard = ({ article }) => {
   );
 };
 
-export default ArticleCard;
+export default Recommendation;
