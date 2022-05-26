@@ -25,7 +25,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import { RiShareBoxFill } from "react-icons/ri";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout } from "framer-motion";
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 
 const Article = ({ article }) => {
@@ -132,68 +132,78 @@ const Article = ({ article }) => {
             {/* </ReactMarkdown> */}
           </div>
 
-          <div className="fixed bottom-[15vh] right-2 flex flex-col gap-8 bg-primary text-white bg-opacity-[0.9] rounded-xl py-7 px-4 z-[99]">
-            <div onClick={() => setShareState((current) => !current)}>
-              {!ShareState ? (
-                <RiShareBoxFill size={18} />
-              ) : (
-                <BiDotsHorizontalRounded />
-              )}
-            </div>
-            <AnimatePresence>
-              {ShareState && (
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: -20,
-                    originY: "top",
-                    height: 0,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                    originY: "top",
-                    height: "100%",
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: -20,
-                    originY: "top",
-                    height: 0,
-                  }}
-                  transition={{ duration: 0.2 }}
-                  className="flex flex-col gap-8"
-                >
-                  <FacebookShareButton
-                    url={`${SITE_URL}/article/${Slug}`}
-                    quote={Title}
+          <AnimateSharedLayout>
+            <motion.div
+              layout
+              transition={{ duration: 0.2 }}
+              className="fixed bottom-[15vh] right-2 flex flex-col-reverse gap-8 bg-primary text-white bg-opacity-[0.8] rounded-xl py-7 px-4 z-[99]"
+            >
+              <div onClick={() => setShareState((current) => !current)}>
+                {!ShareState ? (
+                  <RiShareBoxFill size={18} />
+                ) : (
+                  <BiDotsHorizontalRounded />
+                )}
+              </div>
+              <AnimatePresence>
+                {ShareState && (
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                      y: -50,
+                      height: 0,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      y: 0,
+                      height: "100%",
+                    }}
+                    exit={{
+                      opacity: 0,
+                      y: -50,
+                      height: 0,
+                    }}
+                    transition={{ duration: 0.2 }}
+                    layout
+                    className="flex flex-col gap-8"
                   >
-                    <FaFacebookF size={18} />
-                  </FacebookShareButton>
-                  <TwitterShareButton
-                    url={`${SITE_URL}/article/${Slug}`}
-                    title={Title}
-                    related={["v-land", "vegan", "UK", "v-land uk", "magazine"]}
-                  >
-                    <FaTwitter size={18} />
-                  </TwitterShareButton>
-                  <WhatsappShareButton
-                    url={`${SITE_URL}/article/${Slug}`}
-                    title={Title}
-                    separator="-"
-                  >
-                    <FaWhatsapp size={18} />
-                  </WhatsappShareButton>
-                  <TelegramShareButton
-                    url={`${SITE_URL}/article/${Slug}`}
-                    title={Title}
-                  >
-                    <FaTelegramPlane size={18} />
-                  </TelegramShareButton>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                    <FacebookShareButton
+                      url={`${SITE_URL}/article/${Slug}`}
+                      quote={Title}
+                    >
+                      <FaFacebookF size={18} />
+                    </FacebookShareButton>
+                    <TwitterShareButton
+                      url={`${SITE_URL}/article/${Slug}`}
+                      title={Title}
+                      related={[
+                        "v-land",
+                        "vegan",
+                        "UK",
+                        "v-land uk",
+                        "magazine",
+                      ]}
+                    >
+                      <FaTwitter size={18} />
+                    </TwitterShareButton>
+                    <WhatsappShareButton
+                      url={`${SITE_URL}/article/${Slug}`}
+                      title={Title}
+                      separator="-"
+                    >
+                      <FaWhatsapp size={18} />
+                    </WhatsappShareButton>
+                    <TelegramShareButton
+                      url={`${SITE_URL}/article/${Slug}`}
+                      title={Title}
+                    >
+                      <FaTelegramPlane size={18} />
+                    </TelegramShareButton>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          </AnimateSharedLayout>
         </section>
         <section className="col-span-4">
           <h1 className="text-4xl lg:text-5xl mt-2 px-2">For You</h1>
