@@ -68,8 +68,8 @@ const Footer = () => {
             Subscribe
           </h2>
           <h4 className="text-neutral-500 text-[11px] lg:text-xs font-medium text-center lg:text-left my-5 px-3">
-            Join our newsletter to receive the latest news and updates directly
-            from us in your inbox. Best part? It&apos;s free!
+            Subscribe to our newsletter to receive the latest news and updates
+            directly from us in your inbox. Best part? It&apos;s free!
           </h4>
           <form
             onSubmit={emailSubmit}
