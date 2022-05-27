@@ -26,6 +26,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import NavMenu from "../components/NavMenu";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
+import SearchCard from "../components/SearchCard";
+const qs = require("qs");
 
 const Layout = ({ children, title, desc, keywords, image }) => {
   const router = useRouter();
@@ -33,6 +35,8 @@ const Layout = ({ children, title, desc, keywords, image }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [Open, setOpen] = useState(false);
   const [Nav, setNav] = useState(true);
+  const [Query, setQuery] = useState("");
+  const [MobileQuery, setMobileQuery] = useState("");
 
   //Function to toggle drawer
   const toggleDrawer = () => {
@@ -47,14 +51,13 @@ const Layout = ({ children, title, desc, keywords, image }) => {
     }
     isScrollingDown && setNav(false);
     isScrollingUp && setNav(true);
-    // document.addEventListener("scroll", () => {
-    //   if (scrollY > 200) {
-    //     setNav(false);
-    //   } else {
-    //     setNav(true);
-    //   }
-    // });
   }, [isScrollingDown, isScrollingUp, isScrolling]);
+
+  //Search query
+  const searchQuery = qs.stringify({
+    q: MobileQuery,
+  });
+  const searchLink = `/search?${searchQuery}`;
 
   return (
     <>
@@ -92,9 +95,11 @@ const Layout = ({ children, title, desc, keywords, image }) => {
       <nav className="bg-transparent w-screen h-auto fixed top-0 drop-shadow-md z-[999]">
         <div className="relative bg-white flex justify-between items-center py-1 px-5 lg:px-8 z-[999]">
           <div className="items-center space-x-4 hidden lg:flex">
-            <button className="bg-primary text-white text-sm py-2 px-6 rounded-3xl hover:bg-transparent hover:border-[1.5px] border-primary hover:text-primary transition-all">
+            {/* <button
+              className="bg-primary text-white text-sm py-2 px-6 rounded-3xl hover:bg-transparent hover:border-[1.5px] border-primary hover:text-primary transition-all"
+            >
               Subscribe
-            </button>
+            </button> */}
             <NavMenu />
           </div>
           <div
@@ -112,17 +117,20 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               toggle={toggleDrawer}
             />
           </div>
-          <div className="hidden lg:flex w-1/4 border-[1px] border-primary justify-between rounded-3xl overflow-hidden px-1 py-1">
+          <div className="hidden lg:flex lg:flex-row-reverse w-1/4 border-[1px] border-primary justify-between rounded-3xl overflow-hidden px-1 py-1">
             <input
               name="SearchText"
               type="text"
               placeholder="Search anything..."
               className="w-full px-3 py-1 text-[16px] placeholder-neutral-300 text-neutral-800 focus:outline-none"
+              value={Query}
+              onChange={(e) => setQuery(e.target.value)}
             />
-            <button className="bg-primary text-white h-auto aspect-square p-2 rounded-full">
+            <div className="text-primary h-auto aspect-square p-2 rounded-full">
               <BiSearch size={20} />
-            </button>
+            </div>
           </div>
+          <SearchCard Query={Query} setQuery={setQuery} />
         </div>
         <AnimatePresence>
           {Nav && (
@@ -134,15 +142,15 @@ const Layout = ({ children, title, desc, keywords, image }) => {
             >
               <div className="h-auto bg-green-50 flex space-x-3 flex-nowrap 2xl:justify-center overflow-x-scroll py-[10px] px-4">
                 <NavLink link="/">Home</NavLink>
-                <NavLink link="/category/articles">Articles</NavLink>
+                <NavLink link="/articles">Articles</NavLink>
                 <NavLink link="/category/interviews">Interviews</NavLink>
-                <NavLink link="/category/food-drink">Food & Drink</NavLink>
+                <NavLink link="/category/food-and-drink">Food & Drink</NavLink>
                 <NavLink link="/category/lifestyle">Lifestyle</NavLink>
-                <NavLink link="/category/fashion-beauty">
+                <NavLink link="/category/fashion-and-beauty">
                   Fashion & Beauty
                 </NavLink>
                 <NavLink link="/category/recipes">Recipes</NavLink>
-                <NavLink link="/category/health-wellbeing">
+                <NavLink link="/category/health-and-wellbeing">
                   Health & Wellbeing
                 </NavLink>
                 <NavLink link="/category/shopping">Shopping</NavLink>
@@ -176,9 +184,14 @@ const Layout = ({ children, title, desc, keywords, image }) => {
                 name="SearchText"
                 type="text"
                 placeholder="Search anything..."
-                className="px-3 py-1 text-[16px] placeholder-neutral-300 text-neutral-800 focus:outline-none"
+                className="w-full px-3 py-1 text-[16px] placeholder-neutral-300 text-neutral-800 focus:outline-none"
+                value={MobileQuery}
+                onChange={(e) => setMobileQuery(e.target.value)}
               />
-              <button className="bg-primary text-white h-auto aspect-square p-2 rounded-full">
+              <button
+                className="bg-primary text-white h-auto aspect-square p-2 rounded-full"
+                onClick={() => router.push(searchLink)}
+              >
                 <BiSearch size={20} />
               </button>
             </div>
@@ -246,5 +259,5 @@ Layout.defaultProps = {
   page: "Home",
   image: "Logo.JPG",
   keywords: "vland, vegan, uk, green, nutritional, v-l, v-land, v",
-  desc: "V-Land",
+  desc: "🇬🇧 Your UK Vegan Magazine ✨ News | Entertainment | And more 📌 ",
 };

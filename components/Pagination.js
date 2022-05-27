@@ -12,7 +12,7 @@ const Pagination = ({ meta, min, prefix }) => {
   }
 
   //Page navigation url and data
-  var metaLink = `/${prefix}?page=`;
+  var metaLink = `/${prefix}page=`;
   const { query: currentRoute } = router;
 
   //Default style

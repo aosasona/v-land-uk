@@ -43,198 +43,211 @@ const Article = ({ article }) => {
   const [Comments, setComments] = useState([]);
 
   //Other Articles
-  const Others = Articles.filter((Article) => Article?.id !== article.id);
+  const Others = Articles.filter((Article) => Article?.id !== article?.id);
 
   //Article Data
-  const Title = article.attributes.title;
-  const Slug = article.attributes.slug;
+  const Title = article?.attributes?.title;
+  const Slug = article?.attributes?.slug;
 
   return (
     <Layout
-      title={article.attributes.title}
-      desc={article?.attributes?.description || article?.attributes?.content}
+      title={article?.attributes?.title || "Page Not Found!"}
+      desc={
+        article?.attributes?.description ||
+        article?.attributes?.content ||
+        "This page does not exist yet."
+      }
       keywords={
         article?.attributes?.keywords ||
         "vland, magazine, article, vegan, v-land, uk, brazil, veggy"
       }
-      image={article.attributes.media.data[0].attributes.formats.medium.url}
+      image={
+        article?.attributes?.media?.data[0]?.attributes?.formats?.medium?.url
+      }
     >
       <Back />
-      <main className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-5">
-        <section className="lg:col-span-8">
-          {/* IMAGE & CATEGORIES */}
-          <div className="relative w-full max-w-[100%] aspect-square lg:h-[40vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden object-cover">
-            <Image
-              src={
-                article?.attributes?.media?.data[0]?.attributes?.formats?.large
-                  ?.url ||
-                article?.attributes?.media?.data[0]?.attributes?.formats?.medium
-                  ?.url ||
-                "/Placeholder.png"
-              }
-              alt={
-                article?.attributes?.media?.data[0]?.attributes
-                  ?.alternativeText || "Blog image"
-              }
-              layout="fill"
-            />
-            {/* CATEGORIES */}
-            <div className="absolute flex flex-wrap gap-2 bottom-3 lg:bottom-4 w-[93%] mx-auto right-0 left-0">
-              {article.attributes?.categories?.data.length > 0 &&
-                article?.attributes?.categories?.data?.map(
-                  (category, current) => (
-                    <p
-                      key={current}
-                      className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
-                        category.attributes.name.toLowerCase() === "sponsored"
-                          ? "text-white bg-purple-600"
-                          : "text-primary bg-green-50"
-                      }`}
-                      onClick={() =>
-                        router.push(`/category/${category.attributes.slug}`)
-                      }
-                    >
-                      {category.attributes.name}
-                    </p>
-                  )
-                )}
+      {article ? (
+        <main className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-5">
+          <section className="lg:col-span-8">
+            {/* IMAGE & CATEGORIES */}
+            <div className="relative w-full max-w-[100%] aspect-square lg:h-[40vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden object-cover">
+              <Image
+                src={
+                  article?.attributes?.media?.data[0]?.attributes?.formats
+                    ?.large?.url ||
+                  article?.attributes?.media?.data[0]?.attributes?.formats
+                    ?.medium?.url ||
+                  "/Placeholder.png"
+                }
+                alt={
+                  article?.attributes?.media?.data[0]?.attributes
+                    ?.alternativeText || "Blog image"
+                }
+                layout="fill"
+              />
+              {/* CATEGORIES */}
+              <div className="absolute flex flex-wrap gap-2 bottom-3 lg:bottom-4 w-[93%] mx-auto right-0 left-0">
+                {article?.attributes?.categories?.data.length > 0 &&
+                  article?.attributes?.categories?.data?.map(
+                    (category, current) => (
+                      <p
+                        key={current}
+                        className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
+                          category.attributes.name.toLowerCase() === "sponsored"
+                            ? "text-white bg-purple-600"
+                            : "text-primary bg-green-50"
+                        }`}
+                        onClick={() =>
+                          router.push(`/category/${category.attributes.slug}`)
+                        }
+                      >
+                        {category.attributes.name}
+                      </p>
+                    )
+                  )}
+              </div>
             </div>
-          </div>
 
-          {/* AUTHOR AND DATE */}
-          <div className="flex items-center gap-x-2 px-2 my-4">
-            <img
-              src={
-                findUserByID(article?.attributes?.author)?.attributes?.image
-                  ?.data?.attributes?.formats?.small?.url || "/User.svg"
-              }
-              alt="Author"
-              className="w-10 aspect-square object-cover rounded-full"
-              loading="lazy"
-            />
-            <div className="flex flex-col gap-y-[2px]">
-              <p>
-                {findUserByID(article?.attributes?.author)?.attributes
-                  ?.fullname || "V-Land UK"}
-              </p>
-              {article?.attributes?.publishedAt && (
-                <Moment
-                  format="MMM Do YYYY"
-                  className="text-[11px] font-normal poppins"
-                >
-                  {article?.attributes?.publishedAt}
-                </Moment>
-              )}
-            </div>
-          </div>
-
-          {/* ARTICLE TITLE */}
-          <h1 className="text-primary text-4xl lg:text-6xl mt-2 lg:mt-3 mb-0 px-2">
-            {article.attributes.title}
-          </h1>
-
-          <div className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5">
-            {/* <ReactMarkdown> */}
-            {parse(article?.attributes?.content)}
-            {/* </ReactMarkdown> */}
-          </div>
-
-          {/* ARTICLE COMMENTS */}
-          <CommentsArea
-            id={article.id}
-            comments={Comments}
-            setComments={setComments}
-          />
-          {/* COMMENTS POSTING SECTION */}
-          <CommentForm
-            id={article.id}
-            slug={article.attributes.slug}
-            setComments={setComments}
-          />
-
-          {/* SHARE */}
-          <AnimateSharedLayout>
-            <motion.div
-              layout
-              transition={{ duration: 0.2 }}
-              className="fixed bottom-[15vh] right-2 flex flex-col-reverse gap-8 bg-primary text-white bg-opacity-[0.8] rounded-xl py-7 px-4 z-[99]"
-            >
-              <div onClick={() => setShareState((current) => !current)}>
-                {!ShareState ? (
-                  <RiShareBoxFill size={18} />
-                ) : (
-                  <BiDotsHorizontalRounded />
+            {/* AUTHOR AND DATE */}
+            <div className="flex items-center gap-x-2 px-2 my-4">
+              <img
+                src={
+                  findUserByID(article?.attributes?.author)?.attributes?.image
+                    ?.data?.attributes?.formats?.small?.url || "/User.svg"
+                }
+                alt="Author"
+                className="w-10 aspect-square object-cover rounded-full"
+                loading="lazy"
+              />
+              <div className="flex flex-col gap-y-[2px]">
+                <p>
+                  {findUserByID(article?.attributes?.author)?.attributes
+                    ?.fullname || "V-Land UK"}
+                </p>
+                {article?.attributes?.publishedAt && (
+                  <Moment
+                    format="MMM Do YYYY"
+                    className="text-[11px] font-normal poppins"
+                  >
+                    {article?.attributes?.publishedAt}
+                  </Moment>
                 )}
               </div>
-              <AnimatePresence>
-                {ShareState && (
-                  <motion.div
-                    initial={{
-                      opacity: 0,
-                      y: -50,
-                      height: 0,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      y: 0,
-                      height: "100%",
-                    }}
-                    exit={{
-                      opacity: 0,
-                      y: -50,
-                      height: 0,
-                    }}
-                    transition={{ duration: 0.2 }}
-                    layout
-                    className="flex flex-col gap-8"
-                  >
-                    <FacebookShareButton
-                      url={`${SITE_URL}/article/${Slug}`}
-                      quote={Title}
+            </div>
+
+            {/* ARTICLE TITLE */}
+            <h1 className="text-primary text-4xl lg:text-6xl mt-2 lg:mt-3 mb-0 px-2">
+              {article?.attributes?.title}
+            </h1>
+
+            <div className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5">
+              {/* <ReactMarkdown> */}
+              {parse(article?.attributes?.content)}
+              {/* </ReactMarkdown> */}
+            </div>
+
+            {/* ARTICLE COMMENTS */}
+            <CommentsArea
+              id={article.id}
+              comments={Comments}
+              setComments={setComments}
+            />
+            {/* COMMENTS POSTING SECTION */}
+            <CommentForm
+              id={article.id}
+              slug={article.attributes.slug}
+              setComments={setComments}
+            />
+
+            {/* SHARE */}
+            <AnimateSharedLayout>
+              <motion.div
+                layout
+                transition={{ duration: 0.2 }}
+                className="fixed bottom-[15vh] right-2 flex flex-col-reverse gap-8 bg-primary text-white bg-opacity-[0.8] rounded-xl py-7 px-4 z-[99]"
+              >
+                <div onClick={() => setShareState((current) => !current)}>
+                  {!ShareState ? (
+                    <RiShareBoxFill size={18} />
+                  ) : (
+                    <BiDotsHorizontalRounded />
+                  )}
+                </div>
+                <AnimatePresence>
+                  {ShareState && (
+                    <motion.div
+                      initial={{
+                        opacity: 0,
+                        y: -50,
+                        height: 0,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                        height: "100%",
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: -50,
+                        height: 0,
+                      }}
+                      transition={{ duration: 0.2 }}
+                      layout
+                      className="flex flex-col gap-8"
                     >
-                      <FaFacebookF size={18} />
-                    </FacebookShareButton>
-                    <TwitterShareButton
-                      url={`${SITE_URL}/article/${Slug}`}
-                      title={Title}
-                      related={[
-                        "v-land",
-                        "vegan",
-                        "UK",
-                        "v-land uk",
-                        "magazine",
-                      ]}
-                    >
-                      <FaTwitter size={18} />
-                    </TwitterShareButton>
-                    <WhatsappShareButton
-                      url={`${SITE_URL}/article/${Slug}`}
-                      title={Title}
-                      separator=" - "
-                    >
-                      <FaWhatsapp size={18} />
-                    </WhatsappShareButton>
-                    <TelegramShareButton
-                      url={`${SITE_URL}/article/${Slug}`}
-                      title={Title}
-                    >
-                      <FaTelegramPlane size={18} />
-                    </TelegramShareButton>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          </AnimateSharedLayout>
-        </section>
-        <section className="col-span-4">
-          <h1 className="text-4xl lg:text-5xl mt-2 px-2">Read More</h1>
-          <div className="grid grid-cols-2 lg:grid-cols-1 mt-4 gap-3 lg:gap-4 lg:h-[100vh] overflow-y-scroll px-2 pb-5">
-            {Others.slice(0, 6).map((current, index) => (
-              <Recommendation key={index} article={current} />
-            ))}
-          </div>
-        </section>
-      </main>
+                      <FacebookShareButton
+                        url={`${SITE_URL}/article/${Slug}`}
+                        quote={Title}
+                      >
+                        <FaFacebookF size={18} />
+                      </FacebookShareButton>
+                      <TwitterShareButton
+                        url={`${SITE_URL}/article/${Slug}`}
+                        title={Title}
+                        related={[
+                          "v-land",
+                          "vegan",
+                          "UK",
+                          "v-land uk",
+                          "magazine",
+                        ]}
+                      >
+                        <FaTwitter size={18} />
+                      </TwitterShareButton>
+                      <WhatsappShareButton
+                        url={`${SITE_URL}/article/${Slug}`}
+                        title={Title}
+                        separator=" - "
+                      >
+                        <FaWhatsapp size={18} />
+                      </WhatsappShareButton>
+                      <TelegramShareButton
+                        url={`${SITE_URL}/article/${Slug}`}
+                        title={Title}
+                      >
+                        <FaTelegramPlane size={18} />
+                      </TelegramShareButton>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </AnimateSharedLayout>
+          </section>
+          <section className="col-span-4">
+            <h1 className="text-4xl lg:text-5xl mt-2 px-2">Read More</h1>
+            <div className="grid grid-cols-2 lg:grid-cols-1 mt-4 gap-3 lg:gap-4 lg:h-[100vh] overflow-y-scroll px-2 pb-5">
+              {Others.slice(0, 6).map((current, index) => (
+                <Recommendation key={index} article={current} />
+              ))}
+            </div>
+          </section>
+        </main>
+      ) : (
+        <div className="h-[50vh] w-full flex flex-col items-center justify-center">
+          <h1 className="text-[5rem] lg:text-[9rem] text-red-500">404</h1>
+          <h2 className="text-sm font-medium poppins">Oops. Page not found!</h2>
+        </div>
+      )}
     </Layout>
   );
 };
@@ -252,13 +265,22 @@ export async function getServerSideProps(ctx) {
   });
 
   const query = await fetch(`${API}/articles?${filter}`);
-  const data = await query?.json();
+  const data = await query.json();
 
-  return {
-    props: {
-      article: data?.data[0],
-    },
-  };
+  if (data.data.length > 0) {
+    return {
+      props: {
+        article: data?.data[0],
+      },
+    };
+  } else {
+    return {
+      props: {
+        article: null,
+        meta: null,
+      },
+    };
+  }
 }
 
 export default Article;
