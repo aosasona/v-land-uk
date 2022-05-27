@@ -147,11 +147,7 @@ const Article = ({ article }) => {
             </div>
 
             {/* ARTICLE COMMENTS */}
-            <CommentsArea
-              id={article.id}
-              comments={Comments}
-              setComments={setComments}
-            />
+            <CommentsArea id={article?.id} />
             {/* COMMENTS POSTING SECTION */}
             <CommentForm
               id={article.id}

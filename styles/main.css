@@ -147,6 +147,7 @@ nav ::-webkit-scrollbar {
   border-radius: 50%;
 }
 .loader-normal {
+  animation: 300ms Loader linear infinite;
   width: 20px;
   margin-inline: auto;
   aspect-ratio: 1 / 1;

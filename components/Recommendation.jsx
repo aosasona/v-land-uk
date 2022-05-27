@@ -53,36 +53,40 @@ const Recommendation = ({ article }) => {
         </div>
       </div>
       {/* POST BODY */}
-
-      <div className="article-body">
-        <h1 className="text-[1.75rem] lg:text-4xl leading-tight article-title">
-          {article?.attributes?.title}
-        </h1>
-        <p className="lg:text-xs article-desc">
-          {article?.attributes?.description}
-        </p>
-      </div>
-
-      <div className="article-author">
-        <img
-          src={
-            findUserByID(article?.attributes?.author)?.attributes?.image?.data
-              ?.attributes?.formats?.small?.url || "/User.svg"
-          }
-          alt="Author"
-          className="w-7 aspect-square object-cover rounded-full"
-        />
-
-        <div className="article-author-data">
-          <p>
-            {findUserByID(article?.attributes?.author)?.attributes?.fullname ||
-              "V-Land UK"}
+      <div
+        className="cursor-pointer"
+        onClick={() => router.push(`/article/${article.attributes.slug}`)}
+      >
+        <div className="article-body">
+          <h1 className="text-[1.75rem] lg:text-4xl leading-tight article-title">
+            {article?.attributes?.title}
+          </h1>
+          <p className="lg:text-xs article-desc">
+            {article?.attributes?.description}
           </p>
-          {article?.attributes?.publishedAt && (
-            <Moment format="MMM Do YYYY" className="article-date">
-              {article?.attributes?.publishedAt}
-            </Moment>
-          )}
+        </div>
+
+        <div className="article-author">
+          <img
+            src={
+              findUserByID(article?.attributes?.author)?.attributes?.image?.data
+                ?.attributes?.formats?.small?.url || "/User.svg"
+            }
+            alt="Author"
+            className="w-7 aspect-square object-cover rounded-full"
+          />
+
+          <div className="article-author-data">
+            <p>
+              {findUserByID(article?.attributes?.author)?.attributes
+                ?.fullname || "V-Land UK"}
+            </p>
+            {article?.attributes?.publishedAt && (
+              <Moment format="MMM Do YYYY" className="article-date">
+                {article?.attributes?.publishedAt}
+              </Moment>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>
