@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import axios from "axios";
 import Link from "next/link";
 import React, { useState } from "react";
 import {
@@ -7,17 +8,48 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { API } from "../config/api";
 import Icon from "./Icon";
+import Loader from "./Loader";
+import { toast, ToastContainer } from "react-toastify";
 
 const Footer = () => {
   const [Mail, setMail] = useState("");
+  const [Loading, setLoading] = useState(false);
 
   //Get current year
   const year = new Date().getFullYear();
 
+  //Toast options
+  const options = {
+    position: "top-right",
+    autoClose: 4000,
+    draggable: true,
+    pauseOnHover: true,
+    closeOnClick: true,
+  };
+
   //Handle form submission
   const emailSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
+    const url = `${API}/subscriptions`;
+    const data = {
+      data: {
+        email: Mail.toLowerCase(),
+      },
+    };
+
+    axios
+      .post(url, data)
+      .then((res) => {
+        setLoading(false);
+        toast.success("Welcome aboard! 🎉", options);
+      })
+      .catch((err) => {
+        setLoading(false);
+        toast.error("Something went wrong, please try again 🥲", options);
+      });
   };
   return (
     <footer className="w-full bg-green-50 bg-opacity-70 text-neutral-800 py-12 lg:py-16 px-4 mt-[8vh] lg:mt-[10vh]">
@@ -80,6 +112,7 @@ const Footer = () => {
               type="email"
               className="w-full bg-transparent text-sm focus:outline-none poppins placeholder-primary placeholder-opacity-30 font-medium px-3 lg:px-4 rounded-3xl"
               placeholder="Email address"
+              value={Mail}
               onChange={(e) => setMail(e.target.value)}
             />
             <button
@@ -87,7 +120,7 @@ const Footer = () => {
               name="Subscribe"
               className="bg-primary hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all text-white text-xs font-semibold rounded-3xl poppins px-5 py-3 lg:py-4"
             >
-              Subscribe
+              {Loading ? <Loader /> : "Subscribe"}
             </button>
           </form>
         </div>
@@ -95,6 +128,7 @@ const Footer = () => {
       <div className="text-center text-[10px] font-medium lg:font-medium poppins mt-10 lg:mt-12">
         &copy;{year} V-Land UK. All rights reserved.
       </div>
+      <ToastContainer />
     </footer>
   );
 };

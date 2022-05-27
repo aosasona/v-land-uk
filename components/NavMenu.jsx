@@ -58,22 +58,38 @@ const NavMenu = () => {
             <section className="col-span-2">
               <div className="grid grid-cols-4 h-min gap-4 mt-3 cursor-pointer">
                 <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 rounded-md transition-all">
-                  <a href="http://instagramm.com/vlanduk">
+                  <a
+                    href="http://instagramm.com/vlanduk"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <FaInstagram size={15} />
                   </a>
                 </div>
                 <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 rounded-md transition-all">
-                  <a href="https://www.facebook.com/V-Land-UK-100137252369546">
+                  <a
+                    href="https://www.facebook.com/V-Land-UK-100137252369546"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <FaFacebookF size={15} />
                   </a>
                 </div>
                 <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 rounded-md transition-all">
-                  <a href="https://twitter.com/vlandukmag">
+                  <a
+                    href="https://twitter.com/vlandukmag"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <FaTwitter size={15} />
                   </a>
                 </div>
                 <div className="w-min aspect-square p-2 text-white bg-primary hover:scale-95 rounded-md transition-all">
-                  <a href="https://www.linkedin.com/company/v-land-uk">
+                  <a
+                    href="https://www.linkedin.com/company/v-land-uk"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     <FaLinkedinIn size={15} />
                   </a>
                 </div>
