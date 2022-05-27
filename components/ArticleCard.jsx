@@ -88,8 +88,8 @@ const ArticleCard = ({ article }) => {
       <div className="article-author">
         <img
           src={
-            findUserByID(article?.attributes?.author)?.attributes?.image?.data
-              ?.attributes?.formats?.small?.url || "/User.svg"
+            findUserByID(article?.attributes?.author?.data?.id)?.attributes
+              ?.image?.data?.attributes?.formats?.small?.url || "/User.svg"
           }
           alt="Author"
           className="w-7 aspect-square object-cover rounded-full"
@@ -97,8 +97,8 @@ const ArticleCard = ({ article }) => {
 
         <div className="article-author-data">
           <p>
-            {findUserByID(article?.attributes?.author)?.attributes?.fullname ||
-              "V-Land UK"}
+            {findUserByID(article?.attributes?.author?.data?.id)?.attributes
+              ?.fullname || "V-Land UK"}
           </p>
           {article?.attributes?.publishedAt && (
             <Moment format="MMM Do YYYY" className="article-date">

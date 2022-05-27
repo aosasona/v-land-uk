@@ -56,8 +56,8 @@ const GlobalProvider = ({ children }) => {
 
   //Find a user by ID
   const findUserByID = (id) => {
-    const author = Authors.filter(
-      (user) => parseInt(user.attributes.author.data.id) === parseInt(id)
+    const author = Authors?.filter(
+      (user) => parseInt(user?.id) === parseInt(id)
     );
     return author[0];
   };

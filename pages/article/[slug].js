@@ -112,8 +112,9 @@ const Article = ({ article }) => {
             <div className="flex items-center gap-x-2 px-2 my-4">
               <img
                 src={
-                  findUserByID(article?.attributes?.author)?.attributes?.image
-                    ?.data?.attributes?.formats?.small?.url || "/User.svg"
+                  findUserByID(article?.attributes?.author?.data?.id)
+                    ?.attributes?.image?.data?.attributes?.formats?.small
+                    ?.url || "/User.svg"
                 }
                 alt="Author"
                 className="w-10 aspect-square object-cover rounded-full"
@@ -121,8 +122,8 @@ const Article = ({ article }) => {
               />
               <div className="flex flex-col gap-y-[2px]">
                 <p>
-                  {findUserByID(article?.attributes?.author)?.attributes
-                    ?.fullname || "V-Land UK"}
+                  {findUserByID(article?.attributes?.author?.data?.id)
+                    ?.attributes?.fullname || "V-Land UK"}
                 </p>
                 {article?.attributes?.publishedAt && (
                   <Moment
