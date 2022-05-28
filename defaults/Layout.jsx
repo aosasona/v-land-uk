@@ -157,7 +157,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
                 <NavLink link="/category/entertainment">Entertainment</NavLink>
                 <NavLink link="/category/environment">Environment</NavLink>
                 <NavLink link="/category/shoutout">Shoutout</NavLink>
-                <NavLink link="/category/europe">Europe</NavLink>
+                {/* <NavLink link="/category/europe">Europe</NavLink> */}
                 <NavLink link="/category/events">Events</NavLink>
               </div>
             </motion.div>
