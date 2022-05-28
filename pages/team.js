@@ -39,7 +39,7 @@ const Team = ({ excerpt, team }) => {
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="w-full flex flex-col gap-2 bg-white rounded-xl drop-shadow-md  mb-4"
+                className="w-full flex flex-col gap-2 bg-white rounded-xl shadow-sm  mb-4"
               >
                 <div className="w-full grid grid-cols-2 items-center gap-3 lg:gap-5 px-4 lg:px-7 py-5">
                   <div className="w-[90%] lg:w-[90%] aspect-square rounded-full overflow-hidden">
