@@ -16,6 +16,8 @@ const Team = ({ excerpt, team }) => {
   const twitter = "https://twitter.com";
   const instagram = "https://instagram.com";
   const facebook = "https://facebook.com";
+  const linkedin = "https://www.linkedin.com/in";
+
   return (
     <Layout
       title="Meet The Team"
@@ -68,6 +70,13 @@ const Team = ({ excerpt, team }) => {
                       {staff?.attributes?.twitter && (
                         <Icon url={`${twitter}/${staff?.attributes?.twitter}`}>
                           <FaTwitter size={13} />
+                        </Icon>
+                      )}
+                      {staff?.attributes?.linkedin && (
+                        <Icon
+                          url={`${linkedin}/${staff?.attributes?.linkedin}`}
+                        >
+                          <FaLinkedinIn size={13} />
                         </Icon>
                       )}
                       {staff?.attributes?.facebook && (
