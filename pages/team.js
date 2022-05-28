@@ -26,8 +26,8 @@ const Team = ({ excerpt, team }) => {
     >
       <Back />
       <main className="mt-4">
-        <h1 className="text-4xl lg:text-5xl">Team</h1>
-        <h2 className="text-primary text-sm font-medium lg:text-[16px] leading-relaxed poppins mt-4 px-1">
+        <h1 className="text-4xl lg:text-5xl text-primary">Team</h1>
+        <h2 className="text-sm font-medium lg:text-[16px] leading-relaxed poppins mt-4 px-1">
           {excerpt}
         </h2>
 
@@ -98,7 +98,7 @@ const Team = ({ excerpt, team }) => {
                     </div>
                   </div>
                 </div>
-                <div className="bg-primary bg-opacity-[0.03] text-primary font-medium poppins text-sm lg:text-base leading-relaxed mt-auto px-4 lg:px-7 py-5">
+                <div className="bg-neutral bg-opacity-[0.03] text-neutral-800 font-medium poppins text-sm lg:text-base leading-relaxed mt-auto px-4 lg:px-7 py-5">
                   {staff?.attributes?.bio}
                 </div>
               </motion.div>
