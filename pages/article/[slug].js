@@ -147,13 +147,13 @@ const Article = ({ article }) => {
             </ReactMarkdown>
 
             {/* ARTICLE COMMENTS */}
-            <CommentsArea id={article?.id} />
+            {/* <CommentsArea id={article?.id} /> */}
             {/* COMMENTS POSTING SECTION */}
-            <CommentForm
+            {/* <CommentForm
               id={article.id}
               slug={article.attributes.slug}
               setComments={setComments}
-            />
+            /> */}
 
             {/* SHARE */}
             <AnimateSharedLayout>
