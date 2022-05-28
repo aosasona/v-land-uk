@@ -61,7 +61,7 @@ const NavMenu = () => {
                   <a
                     href="http://instagramm.com/vlanduk"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     <FaInstagram size={15} />
                   </a>
@@ -70,7 +70,7 @@ const NavMenu = () => {
                   <a
                     href="https://www.facebook.com/V-Land-UK-100137252369546"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     <FaFacebookF size={15} />
                   </a>
@@ -79,7 +79,7 @@ const NavMenu = () => {
                   <a
                     href="https://twitter.com/vlandukmag"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     <FaTwitter size={15} />
                   </a>
@@ -88,7 +88,7 @@ const NavMenu = () => {
                   <a
                     href="https://www.linkedin.com/company/v-land-uk"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noreferrer noopener"
                   >
                     <FaLinkedinIn size={15} />
                   </a>
