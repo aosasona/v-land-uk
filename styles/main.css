@@ -157,6 +157,9 @@ nav ::-webkit-scrollbar {
   border-left: 2px solid var(--primary);
   border-radius: 50%;
 }
+.about a {
+  text-decoration: underline;
+}
 ::-webkit-scrollbar {
   width: 4px !important;
   background-color: transparent;
