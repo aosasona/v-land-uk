@@ -7,7 +7,11 @@ import Layout from "../defaults/Layout";
 
 const About = ({ about }) => {
   return (
-    <Layout>
+    <Layout
+      title="About Us"
+      desc="V-Land UK was founded with a passion for advocating the many benefits of living a vegan lifestyle, and sharing that passion with readers worldwide.
+    "
+    >
       <Back />
       <main className="w-[95%] lg:w-4/5 mx-auto mt-3">
         <h1 className="text-4xl lg:text-6xl text-primary">About V-Land</h1>
