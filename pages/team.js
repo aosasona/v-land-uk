@@ -25,7 +25,7 @@ const Team = ({ excerpt, team }) => {
       desc="The V-Land UK team are a bunch of like-minded vegan writers, bloggers, influencers, designers etc who are dedicated to bringing you the best vegan content from around the UK"
     >
       <Back />
-      <main className="mt-4 px-2">
+      <main className="mt-4">
         <h1 className="text-4xl lg:text-5xl">Team</h1>
         <h2 className="text-primary text-sm font-medium lg:text-[16px] leading-relaxed poppins mt-4 px-1">
           {excerpt}
@@ -39,7 +39,7 @@ const Team = ({ excerpt, team }) => {
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="w-full flex flex-col gap-2 bg-white rounded-xl shadow-sm  mb-4"
+                className="w-full flex flex-col gap-2 bg-white rounded-xl shadow-md  mb-4"
               >
                 <div className="w-full grid grid-cols-2 items-center gap-3 lg:gap-5 px-4 lg:px-7 py-5">
                   <div className="w-[90%] lg:w-[90%] aspect-square rounded-full overflow-hidden">
