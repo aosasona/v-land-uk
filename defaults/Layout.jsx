@@ -103,7 +103,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
             <NavMenu />
           </div>
           <div
-            className="h-[7vh] lg:h-[8vh] py-[1.8vh] lg:py-[1.5vh] cursor-pointer"
+            className="h-[8vh] lg:h-[8vh] py-[1.8vh] lg:py-[1.5vh] cursor-pointer"
             onClick={() => router.push("/")}
           >
             <img src="/Header.svg" alt="Header" className="h-full" />
