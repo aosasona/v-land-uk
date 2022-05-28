@@ -93,8 +93,8 @@ const Layout = ({ children, title, desc, keywords, image }) => {
       </Head>
 
       <nav className="bg-transparent w-screen h-auto fixed top-0 drop-shadow-md z-[999]">
-        <div className="relative bg-white flex justify-between items-center py-1 px-5 lg:px-8 z-[999]">
-          <div className="items-center space-x-4 hidden lg:flex">
+        <div className="relative bg-white flex lg:grid lg:grid-cols-3 lg:justify-items-center justify-between items-center py-1 px-5 lg:px-8 z-[999]">
+          <div className="items-center space-x-4 hidden lg:block lg:place-self-start lg:self-center">
             {/* <button
               className="bg-primary text-white text-sm py-2 px-6 rounded-3xl hover:bg-transparent hover:border-[1.5px] border-primary hover:text-primary transition-all"
             >
@@ -117,7 +117,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               toggle={toggleDrawer}
             />
           </div>
-          <div className="hidden lg:flex lg:flex-row-reverse w-1/4 border-[1px] border-primary justify-between rounded-3xl overflow-hidden px-1 py-1">
+          <div className="hidden lg:flex lg:flex-row-reverse w-[22vw] border-[1px] border-primary justify-between rounded-3xl overflow-hidden px-1 py-1">
             <input
               name="SearchText"
               type="text"
@@ -140,7 +140,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               transition={{ duration: 0.2 }}
               exit={{ y: -45, originY: "top", zIndex: 0 }}
             >
-              <div className="h-auto bg-green-50 flex space-x-3 flex-nowrap 2xl:justify-center overflow-x-scroll py-[10px] px-4">
+              <div className="h-auto bg-green-50 flex space-x-3 flex-nowrap 2xl:justify-center overflow-x-scroll py-[10px] px-4 lg:pr-0 pr-6">
                 <NavLink link="/">Home</NavLink>
                 <NavLink link="/articles">Articles</NavLink>
                 <NavLink link="/category/interviews">Interviews</NavLink>

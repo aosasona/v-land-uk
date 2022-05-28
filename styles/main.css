@@ -16,7 +16,7 @@ html,
 body {
   font-weight: 500;
   height: 100%;
-  font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important;
+  font-family: "Poppins", "Righteous", Arial, Helvetica, sans-serif !important;
 }
 nav ::-webkit-scrollbar {
   display: none;
@@ -99,10 +99,13 @@ nav ::-webkit-scrollbar {
   color: white;
 }
 .article-title {
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   transition: all 0.75s ease-in-out;
   color: var(--primary);
-  font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important;
+  /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
+}
+.article-title:hover {
+  text-decoration: underline;
 }
 .article-title::before {
   content: "";

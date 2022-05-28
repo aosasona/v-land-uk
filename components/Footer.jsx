@@ -99,7 +99,7 @@ const Footer = () => {
           <h2 className="text-4xl lg:text-4xl text-center lg:text-left mb-1 px-1 lg:px-2">
             Subscribe
           </h2>
-          <h4 className="w-[95%] mx-auto text-primary text-opacity-70 text-[11px] lg:text-xs font-normal tracking-wider text-center lg:text-left my-5 px-3">
+          <h4 className="w-[95%] mx-auto text-primary text-opacity-70 text-[11px] lg:text-xs font-normal tracking-wider text-center lg:text-left my-5">
             Subscribe to our newsletter to receive the latest news and updates
             directly from us in your inbox. Best part? It&apos;s free!
           </h4>
