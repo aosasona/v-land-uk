@@ -98,7 +98,7 @@ const Team = ({ excerpt, team }) => {
                     </div>
                   </div>
                 </div>
-                <div className="bg-neutral bg-opacity-[0.03] text-neutral-800 font-medium poppins text-sm lg:text-base leading-relaxed mt-auto px-4 lg:px-7 py-5">
+                <div className="bg-neutral-400 bg-opacity-[0.03] text-neutral-800 font-medium poppins text-sm lg:text-base leading-relaxed mt-auto px-4 lg:px-7 py-5">
                   {staff?.attributes?.bio}
                 </div>
               </motion.div>
