@@ -32,7 +32,7 @@ const NavMenu = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -30 }}
             transition={{ ease: "easeInOut", duration: 0.2 }}
-            className="absolute w-max grid grid-cols-2 gap-10 z-[60] top-8 left-0 bg-white drop-shadow-md py-8 px-14 rounded-xl"
+            className="absolute w-max grid grid-cols-2 gap-10 z-[60] top-8 left-0 bg-white drop-shadow-md py-8 px-14 rounded-xl poppins"
             onMouseOver={() => setOpen(true)}
             onMouseOut={() => setOpen(false)}
           >
