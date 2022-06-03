@@ -26,7 +26,9 @@ export default function Home({ articles, meta }) {
           <Pagination meta={meta} min={3} prefix="articles?" />
         </>
       ) : (
-        <div className="py-10 text-3xl px-6">No Articles Yet.</div>
+        <div className="py-[10vh] text-center text-primary text-3xl px-6">
+          No Articles Yet.
+        </div>
       )}
     </Layout>
   );
