@@ -21,6 +21,9 @@ body {
 nav ::-webkit-scrollbar {
   display: none;
 }
+h6 {
+  color: var(--primary);
+}
 .nav-hide {
   animation: 600ms FadeOutUp ease-out forwards;
   display: block;
