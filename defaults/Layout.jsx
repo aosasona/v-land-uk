@@ -117,7 +117,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               toggle={toggleDrawer}
             />
           </div>
-          <div className="hidden lg:flex lg:flex-row-reverse w-[22vw] border-[1px] border-primary justify-between rounded-3xl overflow-hidden px-1 py-1">
+          <div className="hidden lg:flex lg:flex-row-reverse w-[22vw] border-[1px] border-primary justify-between rounded-3xl overflow-hidden px-1 py-1 place-self-end self-center">
             <input
               name="SearchText"
               type="text"
