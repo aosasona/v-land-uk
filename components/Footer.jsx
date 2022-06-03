@@ -43,6 +43,7 @@ const Footer = () => {
     axios
       .post(url, data)
       .then((res) => {
+        setMail("");
         setLoading(false);
         toast.success("Welcome aboard! 🎉", options);
       })
