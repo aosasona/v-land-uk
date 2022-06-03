@@ -22,7 +22,7 @@ const ArticleCard = ({ article }) => {
     });
 
     if (AddClass) {
-      return "sponsored col-span-2";
+      return " col-span-2";
     }
   };
 
@@ -57,7 +57,7 @@ const ArticleCard = ({ article }) => {
                 key={current}
                 className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
                   category.attributes.name.toLowerCase() === "sponsored"
-                    ? "text-white bg-purple-600"
+                    ? "text-white bg-green-800"
                     : "text-primary bg-green-50"
                 }`}
                 onClick={() =>

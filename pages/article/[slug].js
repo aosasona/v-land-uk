@@ -86,13 +86,13 @@ const Article = ({ article }) => {
                 layout="fill"
               />
               {/* CATEGORIES */}
-              <div className="absolute flex flex-wrap gap-2 bottom-3 lg:bottom-4 w-[93%] mx-auto right-0 left-0">
+              <div className="absolute flex flex-wrap gap-2 bottom-3 w-[50%] right-0 left-3">
                 {article?.attributes?.categories?.data.length > 0 &&
                   article?.attributes?.categories?.data?.map(
                     (category, current) => (
                       <p
                         key={current}
-                        className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
+                        className={`text-[11px] lg:text-[12px] font-bold  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
                           category.attributes.name.toLowerCase() === "sponsored"
                             ? "text-white bg-purple-600"
                             : "text-primary bg-green-50"
@@ -106,6 +106,15 @@ const Article = ({ article }) => {
                     )
                   )}
               </div>
+              <a
+                href={article?.attributes?.FeaturedURL}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <div className="max-w-[48%] absolute bottom-3 right-2 text-white bg-white bg-opacity-10 backdrop-blur-lg font-semibold text-[10px] py-2 px-5 rounded-3xl drop-shadow-sm">
+                  {article?.attributes?.FeaturedText}
+                </div>
+              </a>
             </div>
 
             {/* AUTHOR AND DATE */}
@@ -137,7 +146,7 @@ const Article = ({ article }) => {
             </div>
 
             {/* ARTICLE TITLE */}
-            <h1 className="text-primary text-4xl lg:text-6xl mt-2 lg:mt-3 mb-0 px-2">
+            <h1 className="text-primary font-[900] text-4xl lg:text-6xl mt-2 lg:mt-3 mb-0 px-2">
               {article?.attributes?.title}
             </h1>
 
@@ -230,7 +239,9 @@ const Article = ({ article }) => {
             </AnimateSharedLayout>
           </section>
           <section className="col-span-4">
-            <h1 className="text-4xl lg:text-5xl mt-2 px-2">Read More</h1>
+            <h1 className="text-4xl lg:text-5xl text-primary font-[800] mt-2 px-2">
+              Read More
+            </h1>
             <div className="grid grid-cols-2 lg:grid-cols-1 mt-4 gap-3 lg:gap-4 lg:h-[100vh] overflow-y-scroll px-2 pb-5">
               {Others.slice(0, 6).map((current, index) => (
                 <Recommendation key={index} article={current} />

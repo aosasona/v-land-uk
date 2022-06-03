@@ -3,6 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Macondo:100,200,300,400,500,600,700,800,900&display=swap);
 :root {
   --primary: #4bac48;
+  --secondary: #004d2a;
 }
 
 * {
@@ -30,6 +31,12 @@ h6 {
 a {
   color: var(--primary);
 }
+.caption {
+  color: black !important;
+  font-weight: 800;
+  font-size: inherit;
+  margin-top: 2em;
+}
 .nav-hide {
   animation: 600ms FadeOutUp ease-out forwards;
   display: block;
@@ -38,7 +45,7 @@ a {
   font-family: "Poppins", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif !important;
 }
 .sponsored {
-  background: rgba(75, 172, 72) !important;
+  /* background: var(--primary) !important; */
   color: white !important;
 }
 .sponsored h1 {
@@ -62,7 +69,7 @@ a {
   font-family: "Poppins", "Segoe UI", Tahoma !important;
 }
 .article-preview {
-  color: rgba(90, 90, 90);
+  color: rgba(0, 0, 0);
   max-width: 100%;
   font-weight: 400;
   font-family: "Poppins", "Segoe UI", Tahoma !important;
@@ -107,8 +114,31 @@ a {
   font-size: 13px;
   color: white;
 }
+.article-preview h5 {
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Poppins", Arial, Helvetica, sans-serif !important;
+  color: black;
+  margin-top: -2.4rem;
+  padding-inline: 4px;
+  font-weight: 500;
+}
+.article-preview a {
+  color: var(--primary);
+  font-weight: 700;
+}
+.article-preview img {
+  border-radius: 15px;
+}
+.article-preview h5 a {
+  font-weight: 800;
+  color: black;
+}
+.article-preview h5 b {
+  font-weight: 800;
+}
 .article-title {
-  font-weight: 700 !important;
+  font-weight: 900 !important;
   transition: all 0.75s ease-in-out;
   color: var(--primary);
   /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
@@ -121,7 +151,7 @@ a {
   /* position: absolute; */
   display: block;
   width: 100%;
-  height: 3px;
+  height: 4px;
   /* bottom: 0;
   left: 0; */
   background-color: var(--primary);
@@ -135,7 +165,7 @@ a {
 
 .tag {
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
-  font-weight: 700 !important;
+  font-weight: 900 !important;
 }
 .tag:hover {
   transform: translateY(-0.2rem);
