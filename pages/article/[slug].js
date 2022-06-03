@@ -111,7 +111,7 @@ const Article = ({ article }) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <div className="max-w-[48%] absolute bottom-3 right-2 text-white bg-white bg-opacity-10 backdrop-blur-lg font-semibold text-[10px] py-2 px-5 rounded-3xl drop-shadow-sm">
+                <div className="max-w-[48%] absolute bottom-3 right-2 text-white bg-white bg-opacity-10 backdrop-blur-lg font-semibold text-[11px] py-2 px-5 rounded-3xl drop-shadow-sm hover:scale-95 hover:-translate-y-1 transition-all">
                   {article?.attributes?.FeaturedText}
                 </div>
               </a>
