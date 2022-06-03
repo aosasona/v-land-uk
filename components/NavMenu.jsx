@@ -19,7 +19,7 @@ const NavMenu = () => {
       <button
         type="button"
         name="Menu"
-        className="text-primary flex items-center"
+        className="text-primary flex items-center text-sm font-medium"
         onMouseOver={clickHandler}
       >
         <div>Menu</div>
