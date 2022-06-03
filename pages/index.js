@@ -16,12 +16,18 @@ export default function Home({ articles, meta }) {
 
   return (
     <Layout>
-      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5 lg:gap-y-6">
-        {articles.map((article, index) => (
-          <ArticleCard article={article} key={index} />
-        ))}
-      </div>
-      <Pagination meta={meta} min={3} prefix="articles?" />
+      {articles.length > 0 ? (
+        <>
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5 lg:gap-y-6">
+            {articles?.map((article, index) => (
+              <ArticleCard article={article} key={index} />
+            ))}
+          </div>
+          <Pagination meta={meta} min={3} prefix="articles?" />
+        </>
+      ) : (
+        <div className="py-10 text-3xl px-6">No Articles Yet.</div>
+      )}
     </Layout>
   );
 }
