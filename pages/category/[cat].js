@@ -26,6 +26,11 @@ export default function Categories({ articles, meta, category }) {
         </>
       ) : (
         <div className="h-[50vh] w-full flex flex-col items-center justify-center">
+          <img
+            src="/404.png"
+            alt="Page Not Found"
+            className="w-[85vw] lg:w-2/5 object-contain"
+          />
           <h2 className="text-sm text-red-500 font-semibold poppins">
             Oops. No articles yet!
           </h2>
