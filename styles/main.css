@@ -162,6 +162,7 @@ nav ::-webkit-scrollbar {
 }
 .about a {
   text-decoration: underline;
+  color: var(--primary);
 }
 ::-webkit-scrollbar {
   width: 4px !important;
