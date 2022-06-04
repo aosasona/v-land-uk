@@ -128,14 +128,7 @@ a {
   color: var(--primary);
   font-weight: 700;
 }
-.article-preview img {
-  border-radius: 15px;
-}
-.article-preview h5 a {
-  font-weight: 800;
-  color: black;
-}
-.article-preview h5 b {
+.article-preview b {
   font-weight: 800;
 }
 .article-preview::first-letter {
