@@ -150,10 +150,12 @@ const Article = ({ article }) => {
               {article?.attributes?.title}
             </h1>
 
-            <ReactMarkdown className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line">
-              {/* {parse(article?.attributes?.content)} */}
-              {article?.attributes?.content}
-            </ReactMarkdown>
+            {/* <ReactMarkdown className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line"> */}
+            <div className="text-base lg:text-lg article-preview mt-3 lg:mt-4 mb-5 whitespace-pre-line">
+              {parse(article?.attributes?.content)}
+            </div>
+            {/* {article?.attributes?.content} */}
+            {/* </ReactMarkdown> */}
 
             {/* ARTICLE COMMENTS */}
             {/* <CommentsArea id={article?.id} /> */}

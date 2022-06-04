@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import Back from "../components/Back";
 import { API } from "../config/api";
 import Layout from "../defaults/Layout";
+const parse = require("html-react-parser");
 
 const About = ({ about }) => {
   return (
@@ -18,9 +19,9 @@ const About = ({ about }) => {
         <div className="relative w-full lg:w-3/5 mx-auto aspect-square my-3">
           <Image src="/Placeholder.png" alt="About Image" layout="fill" />
         </div>
-        <ReactMarkdown className="text-[16px] lg:text-lg text-neutral-700 tracking-wide leading-relaxed poppins my-2 whitespace-pre-line about">
-          {about}
-        </ReactMarkdown>
+        <div className="text-[16px] lg:text-lg text-neutral-700 tracking-wide leading-relaxed poppins my-2 whitespace-pre-line about">
+          {parse(about)}
+        </div>
       </main>
     </Layout>
   );

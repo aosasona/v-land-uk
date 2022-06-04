@@ -12,6 +12,7 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+const parse = require("html-react-parser");
 
 const Team = ({ excerpt, team }) => {
   const twitter = "https://twitter.com";
@@ -28,7 +29,7 @@ const Team = ({ excerpt, team }) => {
       <main className="mt-4">
         <h1 className="text-4xl lg:text-5xl text-primary">Team</h1>
         <h2 className="text-sm font-medium lg:text-[16px] leading-relaxed poppins mt-4 px-1">
-          {excerpt}
+          {parse(excerpt)}
         </h2>
 
         <section className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-5 gap-y-2 lg:gap-y-6 mt-10">
@@ -99,7 +100,7 @@ const Team = ({ excerpt, team }) => {
                   </div>
                 </div>
                 <div className="bg-neutral-400 bg-opacity-[0.03] text-neutral-800 font-medium poppins text-sm lg:text-base leading-relaxed mt-auto px-4 lg:px-7 py-5">
-                  {staff?.attributes?.bio}
+                  {parse(staff?.attributes?.bio)}
                 </div>
               </motion.div>
             ))}

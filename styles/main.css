@@ -116,13 +116,13 @@ a {
   overflow-x: hidden;
 }
 .article-preview h5 {
-  font-size: 14px;
+  /* font-size: 14px;
   font-weight: 600;
   font-family: "Poppins", Arial, Helvetica, sans-serif !important;
   color: black;
   margin-top: -1.2rem;
   padding-inline: 4px;
-  font-weight: 500;
+  font-weight: 500; */
 }
 .article-preview a {
   color: var(--primary);
