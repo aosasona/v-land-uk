@@ -35,11 +35,6 @@ export default function Home({ articles, meta }) {
 }
 
 export async function getStaticProps({ req, res, query }) {
-  res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
-  );
-
   const { page } = query;
 
   //Get data for articles
