@@ -34,7 +34,12 @@ export default function Home({ articles, meta }) {
   );
 }
 
-export async function getStaticProps({ req, res, query }) {
+export async function getServerSideProps({ req, res, query }) {
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=10, stale-while-revalidate=59"
+  );
+
   const { page } = query;
 
   //Get data for articles
@@ -56,6 +61,5 @@ export async function getStaticProps({ req, res, query }) {
       articles: data?.data,
       meta: data?.meta,
     },
-    revalidate: 10,
   };
 }
