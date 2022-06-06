@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useContext, useState } from "react";
 import Image from "next/image";
+import axios from "axios";
 import { useRouter } from "next/router";
 import Moment from "react-moment";
 import { API, SITE_URL } from "../../config/api";
@@ -261,7 +262,17 @@ const Article = ({ article }) => {
   );
 };
 
-export async function getServerSideProps(ctx) {
+export async function getStaticPaths() {
+  const { data } = await axios.get(`${API}/articles`);
+  const articles = data.data;
+  const paths = articles.map((current) => ({
+    params: { slug: current.attributes.slug },
+  }));
+
+  return { paths, fallback: "blocking" };
+}
+
+export async function getStaticProps(ctx) {
   const { slug } = ctx.params;
 
   const filter = qs.stringify({
@@ -281,6 +292,7 @@ export async function getServerSideProps(ctx) {
       props: {
         article: data?.data[0],
       },
+      revalidate: 10, // In seconds
     };
   } else {
     return {
@@ -288,6 +300,7 @@ export async function getServerSideProps(ctx) {
         article: null,
         meta: null,
       },
+      revalidate: 10, // In seconds
     };
   }
 }
