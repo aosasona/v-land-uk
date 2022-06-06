@@ -27,7 +27,7 @@ const About = ({ about }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const response = await fetch(`${API}/about`);
   const data = await response.json();
 
@@ -35,6 +35,7 @@ export async function getServerSideProps() {
     props: {
       about: data?.data?.attributes?.about,
     },
+    revalidate: 10,
   };
 }
 

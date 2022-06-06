@@ -112,7 +112,7 @@ const Team = ({ excerpt, team }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const excerptRequest = await fetch(`${API}/team-excerpt`);
   const excerpt = await excerptRequest.json();
 
@@ -124,6 +124,7 @@ export async function getServerSideProps() {
       excerpt: excerpt?.data?.attributes?.content,
       team: team?.data,
     },
+    revalidate: 10,
   };
 }
 
