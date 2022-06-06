@@ -52,6 +52,8 @@ const Team = ({ excerpt, team }) => {
                           ?.medium?.url ||
                         staff?.attributes?.image?.data?.attributes?.formats
                           ?.large?.url ||
+                        staff?.attributes?.image?.data?.attributes?.formats
+                          ?.thumbnail?.url ||
                         "Placeholder.png"
                       }
                       alt={staff?.attributes?.name || "Staff"}
