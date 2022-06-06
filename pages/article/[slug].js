@@ -287,22 +287,31 @@ export async function getStaticProps(ctx) {
   const query = await fetch(`${API}/articles?${filter}`);
   const data = await query.json();
 
-  if (data.data.length > 0) {
-    return {
+  return {
+    props: {
       props: {
-        article: data?.data[0],
+        article: data?.data[0] || null,
       },
       revalidate: 10, // In seconds
-    };
-  } else {
-    return {
-      props: {
-        article: null,
-        meta: null,
-      },
-      revalidate: 10, // In seconds
-    };
-  }
+    },
+  };
+
+  // if (data.data.length > 0) {
+  //   return {
+  //     props: {
+  //       article: data?.data[0],
+  //     },
+  //     revalidate: 10, // In seconds
+  //   };
+  // } else {
+  //   return {
+  //     props: {
+  //       article: null,
+  //       meta: null,
+  //     },
+  //     revalidate: 10, // In seconds
+  //   };
+  // }
 }
 
 export default Article;
