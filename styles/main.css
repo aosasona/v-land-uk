@@ -147,7 +147,8 @@ a {
   line-height: 1 !important;
   /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
 }
-.article-title:hover {
+.article-title:hover,
+.article-title:focus {
   text-decoration: underline;
   text-underline-offset: 0.2em;
   text-decoration-color: #d5ffd3;
