@@ -101,8 +101,9 @@ const Footer = () => {
             Newsletter
           </h2>
           <h4 className="w-[95%] mx-auto text-primary text-opacity-80 text-[11px] lg:text-xs font-normal tracking-wider text-center lg:text-left my-5">
-            We’ll keep you updated on new information, upcoming events, and the
-            best deals in your area.
+            {/* We’ll keep you updated on new information, upcoming events, and the
+            best deals in your area. */}
+            Never miss out on exclusive articles, deals, and giveaways.
           </h4>
           <form
             onSubmit={emailSubmit}
