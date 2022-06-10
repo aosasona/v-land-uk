@@ -76,7 +76,7 @@ const ArticleCard = ({ article }) => {
           className="cursor-pointer"
           passHref
         >
-          <h1 className="text-[1.75rem] lg:text-4xl leading-tight article-title">
+          <h1 className="text-[1.75rem] lg:text-4xl leading-none article-title">
             {article?.attributes?.title}
           </h1>
         </Link>
