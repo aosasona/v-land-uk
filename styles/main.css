@@ -149,6 +149,12 @@ a {
 }
 .article-title:hover {
   text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-color: #d5ffd3;
+  text-decoration-thickness: 5px !important;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 .article-title::before {
   /* content: ""; */
