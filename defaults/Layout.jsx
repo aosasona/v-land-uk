@@ -149,16 +149,16 @@ const Layout = ({ children, title, desc, keywords, image }) => {
                 <NavLink link="/category/fashion-and-beauty">
                   Fashion & Beauty
                 </NavLink>
-                <NavLink link="/category/recipes">Recipes</NavLink>
                 <NavLink link="/category/health-and-wellbeing">
                   Health & Wellbeing
                 </NavLink>
                 <NavLink link="/category/shopping">Shopping</NavLink>
                 <NavLink link="/category/entertainment">Entertainment</NavLink>
                 <NavLink link="/category/environment">Environment</NavLink>
-                <NavLink link="/category/shoutout">Shoutout</NavLink>
+                <NavLink link="/category/recipes">Recipes</NavLink>
+                {/* <NavLink link="/category/shoutout">Shoutout</NavLink> */}
                 {/* <NavLink link="/category/europe">Europe</NavLink> */}
-                <NavLink link="/category/events">Events</NavLink>
+                {/* <NavLink link="/category/events">Events</NavLink> */}
               </div>
             </motion.div>
           )}
