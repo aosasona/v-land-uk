@@ -100,7 +100,7 @@ const Footer = () => {
           <h2 className="text-4xl lg:text-4xl font-[800] text-center lg:text-left mb-1 px-1 lg:px-2">
             Newsletter
           </h2>
-          <h4 className="w-[95%] mx-auto text-primary text-opacity-80 text-[11px] lg:text-xs font-normal tracking-wider text-center lg:text-left my-5">
+          <h4 className="w-[95%] mx-auto text-neutral-800 text-opacity-80 text-[11px] lg:text-xs font-normal tracking-wider text-center lg:text-left my-5">
             {/* We’ll keep you updated on new information, upcoming events, and the
             best deals in your area. */}
             Never miss out on exclusive articles, deals, and giveaways.
@@ -112,7 +112,7 @@ const Footer = () => {
             <input
               name="email"
               type="email"
-              className="w-full bg-transparent text-sm focus:outline-none poppins placeholder-primary placeholder-opacity-30 font-medium px-3 lg:px-4 rounded-3xl"
+              className="w-full bg-transparent text-sm focus:outline-none poppins placeholder-neutral-800 placeholder-opacity-30 font-medium px-3 lg:px-4 rounded-3xl"
               placeholder="Email address"
               value={Mail}
               onChange={(e) => setMail(e.target.value)}
@@ -120,7 +120,7 @@ const Footer = () => {
             <button
               type="submit"
               name="Subscribe"
-              className="bg-primary hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all text-white text-xs font-semibold rounded-3xl poppins px-5 py-3 lg:py-4"
+              className="bg-neutral-800 hover:text-neutral-800 hover:bg-primary hover:bg-opacity-10 transition-all text-white text-xs font-semibold rounded-3xl poppins px-5 py-3 lg:py-4"
             >
               {Loading ? <Loader /> : "Subscribe"}
             </button>
