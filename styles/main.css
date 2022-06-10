@@ -144,6 +144,7 @@ a {
   font-weight: 900 !important;
   transition: all 0.75s ease-in-out;
   color: var(--primary);
+  line-height: 1 !important;
   /* font-family: "Righteous", "Poppins", Arial, Helvetica, sans-serif !important; */
 }
 .article-title:hover {

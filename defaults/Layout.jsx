@@ -140,7 +140,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               transition={{ duration: 0.2 }}
               exit={{ y: -45, originY: "top", zIndex: 0 }}
             >
-              <div className="h-auto bg-green-50 flex space-x-3 flex-nowrap 2xl:justify-center overflow-x-scroll py-[10px] px-4 lg:pr-0 pr-6">
+              <div className="h-auto bg-neutral-50 flex space-x-3 flex-nowrap 2xl:justify-center overflow-x-scroll py-[12px] px-4 lg:pr-0 pr-6">
                 <NavLink link="/">Home</NavLink>
                 <NavLink link="/articles">Articles</NavLink>
                 <NavLink link="/category/interviews">Interviews</NavLink>
