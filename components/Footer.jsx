@@ -107,7 +107,7 @@ const Footer = () => {
           </h4>
           <form
             onSubmit={emailSubmit}
-            className="w-[90%] mx-auto lg:w-full lg:mx-0 flex border-[2px] border-neutral-800 gap-2 px-1 py-1 rounded-3xl lg:rounded-[2rem]"
+            className="w-[90%] mx-auto lg:w-full lg:mx-0 flex border-[1px] border-neutral-800 gap-2 px-1 py-1 rounded-3xl lg:rounded-[2rem]"
           >
             <input
               name="email"
