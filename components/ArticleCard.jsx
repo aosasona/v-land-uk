@@ -55,10 +55,10 @@ const ArticleCard = ({ article }) => {
             article.attributes.categories.data.map((category, current) => (
               <p
                 key={current}
-                className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
+                className={`text-[9px] lg:text-[10px]  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer  hover:scale-95 transition-all tag ${
                   category.attributes.name.toLowerCase() === "sponsored"
-                    ? "text-white bg-green-800"
-                    : "text-primary bg-green-50"
+                    ? "text-white bg-green-800 hover:bg-primary hover:text-white"
+                    : "text-white bg-primary hover:bg-white hover:text-primary"
                 }`}
                 onClick={() =>
                   router.push(`/category/${category.attributes.slug}`)
