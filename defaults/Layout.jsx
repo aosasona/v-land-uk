@@ -126,7 +126,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               value={Query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <div className="text-primary h-auto aspect-square p-2 rounded-full">
+            <div className="text-neutral-800 h-auto aspect-square p-2 rounded-full">
               <BiSearch size={20} />
             </div>
           </div>
