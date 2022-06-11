@@ -95,7 +95,7 @@ const Article = ({ article }) => {
                         key={current}
                         className={`text-[11px] lg:text-[12px] font-bold  px-2 py-1 rounded-2xl drop-shadow-md cursor-pointer hover:bg-primary hover:text-white hover:scale-95 transition-all tag ${
                           category.attributes.name.toLowerCase() === "sponsored"
-                            ? "text-white bg-purple-600"
+                            ? "text-white bg-green-800"
                             : "text-primary bg-green-50"
                         }`}
                         onClick={() =>
