@@ -129,11 +129,11 @@ const Article = ({ article }) => {
                     ?.url || "/User.svg"
                 }
                 alt="Author"
-                className="w-10 aspect-square object-cover rounded-full"
+                className="w-11 aspect-square object-cover rounded-full"
                 loading="lazy"
               />
-              <div className="flex flex-col gap-y-[2px]">
-                <p>
+              <div className="flex flex-col gap-y-[1px]">
+                <p className="text-sm font-semibold">
                   {findUserByID(article?.attributes?.author?.data?.id)
                     ?.attributes?.fullname || "V-Land UK"}
                 </p>
