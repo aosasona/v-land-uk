@@ -7,14 +7,20 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Moment from "react-moment";
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = ({ article, index }) => {
   const { findUserByID } = useContext(GlobalContext);
   const router = useRouter();
+
+  // ARTICLE INDEX
+  const articleIndex = parseInt(index) + 1;
 
   //FIND SPONSORED POSTS
   const Sponsored = (post) => {
     const AddClass = post.some((cat) => {
-      if (cat.attributes.name.toLowerCase() === "sponsored") {
+      if (
+        cat.attributes.name.toLowerCase() === "sponsored" &&
+        articleIndex % 2 !== 0
+      ) {
         return true;
       } else {
         return false;

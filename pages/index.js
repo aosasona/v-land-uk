@@ -20,7 +20,7 @@ export default function Home({ articles, meta }) {
         <>
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5 lg:gap-y-6">
             {articles?.map((article, index) => (
-              <ArticleCard article={article} key={index} />
+              <ArticleCard article={article} key={index} index={index} />
             ))}
           </div>
           <Pagination meta={meta} min={3} prefix="articles?" />
