@@ -40,7 +40,14 @@ const ArticleCard = ({ article }) => {
         <img
           src={`${
             article.attributes?.media?.data[0]?.attributes?.formats?.medium
-              ?.url || "/Placeholder.png"
+              ?.url ||
+            article.attributes?.media?.data[0]?.attributes?.formats?.large
+              ?.url ||
+            article.attributes?.media?.data[0]?.attributes?.formats?.small
+              ?.url ||
+            article.attributes?.media?.data[0]?.attributes?.formats?.thumbnail
+              ?.url ||
+            "/Placeholder.png"
           }`}
           className="w-full h-full object-cover"
           alt={`${
