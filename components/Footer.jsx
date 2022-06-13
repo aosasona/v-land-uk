@@ -80,7 +80,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="h-full flex flex-col justify-center gap-2 border-l-2 border-primary text-sm font-medium py-2 lg:py-4 px-4">
+          <div className="h-full flex flex-col justify-center gap-2 border-l-2 border-primary text-sm py-2 lg:py-4 px-4 font-bold">
             <div className="hover:text-primary hover:translate-x-1 transition-all">
               <Link href="/about">About</Link>
             </div>
@@ -128,12 +128,12 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center text-[10px] font-medium lg:font-medium poppins mt-10 lg:mt-12">
-        &copy;{year} V-Land UK. All rights reserved. Made by{" "}
+        &copy;{year} V-Land UK. All rights reserved. Built by{" "}
         <a
           href="https://twitter.com/trulyao"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary hover:text-primary hover:underline"
+          className="text-primary hover:text-primary hover:underline font-semibold"
         >
           Ayodeji
         </a>

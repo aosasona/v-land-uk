@@ -140,7 +140,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               transition={{ duration: 0.2 }}
               exit={{ y: -45, originY: "top", zIndex: 0 }}
             >
-              <div className="h-auto bg-neutral-50 flex space-x-3 flex-nowrap 2xl:justify-center overflow-x-scroll py-[12px] px-4 lg:pr-0 pr-6">
+              <div className="h-auto bg-neutral-50 flex gap-1 lg:gap-2 flex-nowrap 2xl:justify-center overflow-x-scroll py-[12px] px-4 lg:pr-0 pr-6">
                 <NavLink link="/">Home</NavLink>
                 <NavLink link="/articles">Articles</NavLink>
                 <NavLink link="/category/interviews">Interviews</NavLink>
@@ -179,7 +179,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
             <Box width="40%" mt={6} mb={8} mx="auto">
               <img src="/Header.svg" alt="Header" className="w-full" />
             </Box>
-            <div className="flex border-[1px] border-primary justify-between rounded-3xl overflow-hidden px-1 py-1">
+            <div className="flex border-[1px] border-neutral-800 justify-between rounded-3xl overflow-hidden px-1 py-1">
               <input
                 name="SearchText"
                 type="text"
@@ -189,7 +189,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
                 onChange={(e) => setMobileQuery(e.target.value)}
               />
               <button
-                className="bg-primary text-white h-auto aspect-square p-2 rounded-full"
+                className="bg-neutral-800 text-white h-auto aspect-square p-2 rounded-full"
                 onClick={() => router.push(searchLink)}
               >
                 <BiSearch size={20} />
@@ -197,28 +197,28 @@ const Layout = ({ children, title, desc, keywords, image }) => {
             </div>
           </DrawerHeader>
           <DrawerBody fontSize={18}>
-            <div className="flex flex-col space-y-5 px-2">
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+            <div className="flex flex-col font-bold gap-y-5 px-2">
+              <div className="hover:text-primary hover:translate-x-3 transition-all">
                 <Link href="/">Home</Link>
               </div>
 
-              {/* <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+              {/* <div className="hover:text-primary hover:translate-x-3 transition-all">
                 <Link href="/shop">Shop</Link>
               </div>
 
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+              <div className="hover:text-primary hover:translate-x-3 transition-all">
                 <Link href="/join-us">Join Us</Link>
               </div> */}
 
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+              <div className="hover:text-primary hover:translate-x-3 transition-all">
                 <Link href="/about">About</Link>
               </div>
 
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+              <div className="hover:text-primary hover:translate-x-3 transition-all">
                 <Link href="/team">Team</Link>
               </div>
 
-              <div className="hover:text-primary hover:translate-x-3 transition-all font-semibold">
+              <div className="hover:text-primary hover:translate-x-3 transition-all">
                 <Link href="/contact">Contact</Link>
               </div>
 

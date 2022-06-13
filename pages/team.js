@@ -27,7 +27,7 @@ const Team = ({ excerpt, team }) => {
     >
       <Back />
       <main className="mt-4">
-        <h1 className="text-4xl lg:text-5xl text-primary">Team</h1>
+        <h1 className="text-4xl lg:text-5xl font-[900] text-primary">Team</h1>
         <h2 className="text-sm font-medium lg:text-[16px] leading-relaxed poppins mt-4 px-1">
           {parse(excerpt)}
         </h2>
@@ -40,10 +40,10 @@ const Team = ({ excerpt, team }) => {
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="w-full flex flex-col gap-2 bg-white rounded-xl shadow-md  mb-4"
+                className="w-full flex flex-col gap-2 bg-white rounded-xl shadow-md mb-4"
               >
-                <div className="w-full grid grid-cols-2 items-center gap-3 lg:gap-5 px-4 lg:px-7 py-5">
-                  <div className="w-[90%] lg:w-[90%] aspect-square rounded-full overflow-hidden">
+                <div className="w-full grid grid-cols-2 items-center gap-2 lg:gap-5 px-3 lg:px-7 py-5">
+                  <div className="w-[90%] lg:w-[90%] aspect-square rounded-xl overflow-hidden">
                     <img
                       src={
                         staff?.attributes?.image?.data?.attributes?.formats
@@ -61,7 +61,7 @@ const Team = ({ excerpt, team }) => {
                     />
                   </div>
                   <div className="flex flex-col gap-2">
-                    <h1 className="text-3xl lg:text-4xl text-primary">
+                    <h1 className="text-[28px] lg:text-4xl text-primary font-[900] leading-tight">
                       {staff?.attributes?.name || "Staff"}
                     </h1>
                     <p className="text-xs lg:text-lg font-light poppins">
