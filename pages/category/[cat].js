@@ -59,6 +59,7 @@ export async function getServerSideProps({ req, res, query, params }) {
   if (data?.data[0]?.attributes?.articles?.data?.length > 0) {
     const articles = [];
 
+    // Fetch the articles themselves
     for (var i = 0; i < data.data[0].attributes.articles.data.length; i++) {
       const getEach = await fetch(
         `${API}/articles/${data.data[0].attributes.articles.data[i].id}?populate=*`
@@ -67,9 +68,23 @@ export async function getServerSideProps({ req, res, query, params }) {
       articles.push(article.data);
     }
 
+    //Only show past and current posts
+    const visible_articles = articles.filter((article) => {
+      const publishedDate = new Date(article?.attributes?.PublishDate);
+      const currentDate = new Date();
+      return publishedDate <= currentDate;
+    });
+
+    //Sort articles by published date
+    const sorted_articles = visible_articles?.sort((a, b) => {
+      const dateA = new Date(a?.attributes?.PublishDate);
+      const dateB = new Date(b?.attributes?.PublishDate);
+      return dateB - dateA;
+    });
+
     return {
       props: {
-        articles: articles,
+        articles: sorted_articles,
         meta: data?.meta,
         category: data?.data[0]?.attributes?.name || cat,
       },

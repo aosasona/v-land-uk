@@ -79,11 +79,11 @@ const Recommendation = ({ article }) => {
             {findUserByID(article?.attributes?.author?.data?.id)?.attributes
               ?.fullname || "V-Land UK"}
           </p>
-          {article?.attributes?.publishedAt && (
-            <Moment format="MMM Do YYYY" className="article-date">
-              {article?.attributes?.publishedAt}
-            </Moment>
-          )}
+          <Moment format="MMM Do YYYY" className="article-date">
+            {article?.attributes?.PublishDate ||
+              article?.attributes?.publishedAt ||
+              article?.attributes?.createdAt}
+          </Moment>
         </div>
       </div>
     </motion.div>

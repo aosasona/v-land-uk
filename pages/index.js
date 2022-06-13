@@ -43,23 +43,38 @@ export async function getServerSideProps({ req, res, query }) {
   const { page } = query;
 
   //Get data for articles
-  const filters = qs.stringify({
-    populate: "*",
-    pagination: {
-      pageSize: PAGINATION_LIMIT,
-      page: page || "1",
+  const filters = qs.stringify(
+    {
+      populate: "*",
+      pagination: {
+        pageSize: PAGINATION_LIMIT,
+        page: page || "1",
+      },
+      // sort: ["publishedAt:desc"],
     },
-    sort: ["publishedAt:asc"],
-  });
+    { encodeValuesOnly: true }
+  );
 
   const response = await fetch(`${API}/articles?${filters}`);
   const data = await response.json();
 
-  //Get data for users
+  //Only show past and current posts
+  const visible_articles = data?.data?.filter((article) => {
+    const publishedDate = new Date(article?.attributes?.PublishDate);
+    const currentDate = new Date();
+    return publishedDate <= currentDate;
+  });
+
+  //Sort articles by published date
+  const sorted_articles = visible_articles?.sort((a, b) => {
+    const dateA = new Date(a?.attributes?.PublishDate);
+    const dateB = new Date(b?.attributes?.PublishDate);
+    return dateB - dateA;
+  });
 
   return {
     props: {
-      articles: data?.data,
+      articles: sorted_articles,
       meta: data?.meta,
     },
   };
