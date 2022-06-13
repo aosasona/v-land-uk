@@ -78,13 +78,15 @@ const Article = ({ article }) => {
                     ?.large?.url ||
                   article?.attributes?.media?.data[0]?.attributes?.formats
                     ?.medium?.url ||
+                  article?.attributes?.media?.data[0]?.attributes?.formats
+                    ?.small?.url ||
                   "/Placeholder.png"
                 }
                 alt={
                   article?.attributes?.media?.data[0]?.attributes
                     ?.alternativeText || "Blog image"
                 }
-                className="w-full h-auto"
+                className="w-full h-full"
               />
               {/* CATEGORIES */}
               <div className="absolute flex flex-wrap gap-2 bottom-3 w-[50%] right-0 left-3">
