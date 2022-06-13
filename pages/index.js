@@ -49,6 +49,7 @@ export async function getServerSideProps({ req, res, query }) {
       pageSize: PAGINATION_LIMIT,
       page: page || "1",
     },
+    sort: ["publishedAt:asc"],
   });
 
   const response = await fetch(`${API}/articles?${filters}`);
