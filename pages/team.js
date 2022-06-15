@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Back from "../components/Back";
 import { API } from "../config/api";
 import Layout from "../defaults/Layout";
-import Image from "next/image";
+const qs = require("qs");
 import Icon from "../components/Icon";
 import {
   FaFacebookF,
@@ -116,7 +116,16 @@ export async function getStaticProps() {
   const excerptRequest = await fetch(`${API}/team-excerpt`);
   const excerpt = await excerptRequest.json();
 
-  const teamRequest = await fetch(`${API}/teams?populate=*`);
+  // Query
+  const filters = qs.stringify(
+    {
+      populate: "*",
+      sort: ["order:asc"],
+    },
+    { encodeValuesOnly: true }
+  );
+
+  const teamRequest = await fetch(`${API}/teams?${filters}`);
   const team = await teamRequest.json();
 
   return {
