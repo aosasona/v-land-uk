@@ -116,6 +116,7 @@ const Footer = () => {
               placeholder="Email address"
               value={Mail}
               onChange={(e) => setMail(e.target.value)}
+              required
             />
             <button
               type="submit"

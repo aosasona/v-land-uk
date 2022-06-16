@@ -32,7 +32,7 @@ const Team = ({ excerpt, team }) => {
           {parse(excerpt)}
         </h2>
 
-        <section className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-5 gap-y-2 lg:gap-y-6 mt-10">
+        <section className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-5 gap-y-3 lg:gap-y-6 mt-10">
           {team?.length > 0 &&
             team.map((staff, index) => (
               <motion.div
@@ -40,7 +40,7 @@ const Team = ({ excerpt, team }) => {
                 initial={{ opacity: 0, y: 100 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="w-full flex flex-col gap-2 bg-white rounded-xl shadow-md mb-4"
+                className="w-full flex flex-col gap-2 bg-white rounded-xl drop-shadow-md"
               >
                 <div className="w-full grid grid-cols-2 items-center gap-2 lg:gap-5 px-3 lg:px-7 py-5">
                   <div className="w-[90%] lg:w-[90%] aspect-square rounded-xl overflow-hidden">
@@ -101,7 +101,7 @@ const Team = ({ excerpt, team }) => {
                     </div>
                   </div>
                 </div>
-                <div className="bg-neutral-400 bg-opacity-[0.03] text-neutral-800 font-medium poppins text-sm lg:text-base leading-relaxed mt-auto px-4 lg:px-7 py-5">
+                <div className="h-full bg-neutral-400 bg-opacity-[0.03] text-neutral-800 font-medium poppins text-sm lg:text-base leading-relaxed px-4 lg:px-7 py-5">
                   {parse(staff?.attributes?.bio)}
                 </div>
               </motion.div>

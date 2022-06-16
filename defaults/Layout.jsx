@@ -27,6 +27,7 @@ import NavMenu from "../components/NavMenu";
 import { useRouter } from "next/router";
 import Footer from "../components/Footer";
 import SearchCard from "../components/SearchCard";
+import Icon from "../components/Icon";
 const qs = require("qs");
 
 const Layout = ({ children, title, desc, keywords, image }) => {
@@ -174,9 +175,15 @@ const Layout = ({ children, title, desc, keywords, image }) => {
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
-          {/* <DrawerCloseButton /> */}
+          <DrawerCloseButton _focus={{ border: "none" }} />
           <DrawerHeader>
-            <Box width="40%" mt={6} mb={8} mx="auto">
+            <Box
+              width="40%"
+              mt={6}
+              mb={8}
+              mx="auto"
+              onClick={() => router.push("/")}
+            >
               <img src="/Header.svg" alt="Header" className="w-full" />
             </Box>
             <div className="flex border-[1px] border-neutral-800 justify-between rounded-3xl overflow-hidden px-1 py-1">
@@ -197,10 +204,12 @@ const Layout = ({ children, title, desc, keywords, image }) => {
             </div>
           </DrawerHeader>
           <DrawerBody fontSize={18}>
-            <div className="flex flex-col font-bold gap-y-5 px-2">
-              <div className="hover:text-primary hover:translate-x-3 transition-all">
-                <Link href="/">Home</Link>
-              </div>
+            <div className="flex flex-col text-base font-bold gap-y-5 px-2">
+              <Link href="/">
+                <div className="hover:text-primary hover:translate-x-3 transition-all">
+                  Home
+                </div>
+              </Link>
 
               {/* <div className="hover:text-primary hover:translate-x-3 transition-all">
                 <Link href="/shop">Shop</Link>
@@ -209,40 +218,36 @@ const Layout = ({ children, title, desc, keywords, image }) => {
               <div className="hover:text-primary hover:translate-x-3 transition-all">
                 <Link href="/join-us">Join Us</Link>
               </div> */}
+              <Link href="/about">
+                <div className="hover:text-primary hover:translate-x-3 transition-all">
+                  About
+                </div>
+              </Link>
+              <Link href="/team">
+                <div className="hover:text-primary hover:translate-x-3 transition-all">
+                  Team
+                </div>
+              </Link>
 
-              <div className="hover:text-primary hover:translate-x-3 transition-all">
-                <Link href="/about">About</Link>
-              </div>
-
-              <div className="hover:text-primary hover:translate-x-3 transition-all">
-                <Link href="/team">Team</Link>
-              </div>
-
-              <div className="hover:text-primary hover:translate-x-3 transition-all">
-                <Link href="/contact">Contact</Link>
-              </div>
+              <Link href="/contact">
+                <div className="hover:text-primary hover:translate-x-3 transition-all">
+                  Contact
+                </div>
+              </Link>
 
               <div className="flex py-3 space-x-4">
-                <div className="p-2 text-white bg-primary rounded-lg">
-                  <a href="http://instagramm.com/vlanduk">
-                    <FaInstagram size={18} />
-                  </a>
-                </div>
-                <div className="p-2 text-white bg-primary rounded-lg">
-                  <a href="https://www.facebook.com/V-Land-UK-100137252369546">
-                    <FaFacebookF size={18} />
-                  </a>
-                </div>
-                <div className="p-2 text-white bg-primary rounded-lg">
-                  <a href="https://twitter.com/vlandukmag">
-                    <FaTwitter size={18} />
-                  </a>
-                </div>
-                <div className="p-2 text-white bg-primary rounded-lg">
-                  <a href="https://www.linkedin.com/company/v-land-uk">
-                    <FaLinkedinIn size={18} />
-                  </a>
-                </div>
+                <Icon url="http://instagramm.com/vlanduk">
+                  <FaInstagram size={13} />
+                </Icon>
+                <Icon url="https://www.facebook.com/V-Land-UK-100137252369546">
+                  <FaFacebookF size={13} />
+                </Icon>
+                <Icon url="https://twitter.com/vlandukmag">
+                  <FaTwitter size={13} />
+                </Icon>
+                <Icon url="https://www.linkedin.com/company/v-land-uk">
+                  <FaLinkedinIn size={13} />
+                </Icon>
               </div>
             </div>
           </DrawerBody>

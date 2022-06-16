@@ -18,7 +18,7 @@ export default function Home({ articles, meta }) {
     <Layout>
       {articles.length > 0 ? (
         <>
-          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 lg:gap-5 lg:gap-y-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[10px] lg:gap-5 lg:gap-y-6">
             {articles?.map((article, index) => (
               <ArticleCard article={article} key={index} index={index} />
             ))}
@@ -37,7 +37,7 @@ export default function Home({ articles, meta }) {
 export async function getServerSideProps({ req, res, query }) {
   res.setHeader(
     "Cache-Control",
-    "public, s-maxage=10, stale-while-revalidate=59"
+    "public, s-maxage=15, stale-while-revalidate=59"
   );
 
   const { page } = query;

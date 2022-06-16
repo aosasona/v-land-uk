@@ -176,7 +176,7 @@ const Article = ({ article }) => {
               <motion.div
                 layout
                 transition={{ duration: 0.2 }}
-                className="fixed bottom-[15vh] right-2 flex flex-col-reverse gap-8 bg-primary text-white bg-opacity-[0.8] rounded-xl py-7 px-4 z-[99]"
+                className="fixed bottom-[10vh] lg:bottom-[15vh] right-2 flex flex-col-reverse gap-8 bg-primary text-white bg-opacity-[0.8] rounded-xl py-7 px-4 z-[99]"
               >
                 <div onClick={() => setShareState((current) => !current)}>
                   {!ShareState ? (
