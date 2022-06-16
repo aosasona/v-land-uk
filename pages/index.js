@@ -1,18 +1,33 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, Fragment } from "react";
 import Layout from "../defaults/Layout";
 import ArticleCard from "../components/ArticleCard";
 import Pagination from "../components/Pagination";
 import { GlobalContext } from "../context/GlobalContext";
 import { API } from "../config/api";
 import { PAGINATION_LIMIT } from "../config/meta";
+import Ads from "../components/Ads";
 const qs = require("qs");
 
-export default function Home({ articles, meta }) {
+export default function Home({ articles, meta, ads }) {
   const { setArticles } = useContext(GlobalContext);
   useEffect(() => {
     setArticles(articles);
   }, []);
+
+  const articlesBeforeAd = 15;
+
+  const checkAds = (index) => {
+    if (ads[(index + 1) / articlesBeforeAd - 1] !== undefined) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const getAdsIndex = (index) => {
+    return (index + 1) / articlesBeforeAd - 1;
+  };
 
   return (
     <Layout>
@@ -20,7 +35,16 @@ export default function Home({ articles, meta }) {
         <>
           <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-[10px] lg:gap-5 lg:gap-y-6">
             {articles?.map((article, index) => (
-              <ArticleCard article={article} key={index} index={index} />
+              <Fragment key={index}>
+                <ArticleCard article={article} index={index} />
+                {/* Show Ads */}
+                {ads.length > 0 && checkAds(index) && (
+                  <Ads
+                    ad={ads[getAdsIndex(index)]}
+                    hey={ads[getAdsIndex(index)]}
+                  />
+                )}
+              </Fragment>
             ))}
           </div>
           <Pagination meta={meta} min={3} prefix="articles?" />
@@ -58,6 +82,10 @@ export async function getServerSideProps({ req, res, query }) {
   const response = await fetch(`${API}/articles?${filters}`);
   const data = await response.json();
 
+  // get ads
+  const adsResponse = await fetch(`${API}/ads?populate=*`);
+  const ads = await adsResponse?.json();
+
   //Only show past and current posts
   const visible_articles = data?.data?.filter((article) => {
     const publishedDate = new Date(article?.attributes?.PublishDate);
@@ -76,6 +104,7 @@ export async function getServerSideProps({ req, res, query }) {
     props: {
       articles: sorted_articles,
       meta: data?.meta,
+      ads: ads?.data,
     },
   };
 }

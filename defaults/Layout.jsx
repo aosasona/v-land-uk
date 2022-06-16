@@ -143,7 +143,7 @@ const Layout = ({ children, title, desc, keywords, image }) => {
             >
               <div className="h-auto bg-neutral-50 flex gap-1 lg:gap-2 flex-nowrap 2xl:justify-center overflow-x-scroll py-[12px] px-4 lg:pr-0 pr-6">
                 <NavLink link="/">Home</NavLink>
-                <NavLink link="/articles">Articles</NavLink>
+                <NavLink link="/category/articles">Articles</NavLink>
                 <NavLink link="/category/interviews">Interviews</NavLink>
                 <NavLink link="/category/food-and-drink">Food & Drink</NavLink>
                 <NavLink link="/category/lifestyle">Lifestyle</NavLink>

@@ -71,7 +71,7 @@ const Article = ({ article }) => {
         <main className="grid grid-cols-1 gap-0 lg:grid-cols-12 lg:gap-5">
           <section className="lg:col-span-8">
             {/* IMAGE & CATEGORIES */}
-            <div className="relative w-full max-w-[100%] aspect-square lg:h-[40vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden object-cover">
+            <div className="relative w-full max-w-full aspect-square lg:h-[40vh] mt-4 mb-4 lg:mb-8 rounded-2xl overflow-hidden">
               <img
                 src={
                   article?.attributes?.media?.data[0]?.attributes?.formats
@@ -88,7 +88,7 @@ const Article = ({ article }) => {
                   article?.attributes?.media?.data[0]?.attributes
                     ?.alternativeText || "Blog image"
                 }
-                className="w-full h-full"
+                className="min-w-full w-full object-cover"
               />
               {/* CATEGORIES */}
               <div className="absolute flex flex-wrap gap-2 bottom-3 w-[50%] right-0 left-3">
